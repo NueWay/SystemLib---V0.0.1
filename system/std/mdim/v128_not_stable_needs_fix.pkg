@@ -1,0 +1,197 @@
+// Vector128 voids
+void NewVector128(v128_data) {
+    return {
+        A: v128_data.a, B: v128_data.b, C: v128_data.c, D: v128_data.d, E: v128_data.e, F: v128_data.f, G: v128_data.g, H: v128_data.h,
+        I: v128_data.i, J: v128_data.j, K: v128_data.k, L: v128_data.l, M: v128_data.m, N: v128_data.n, O: v128_data.o, P: v128_data.p,
+        Q: v128_data.q, R: v128_data.r, S: v128_data.s, T: v128_data.t, U: v128_data.u, V: v128_data.v, W: v128_data.w, X: v128_data.x,
+        Y: v128_data.y, Z: v128_data.z, AA: v128_data.aa, BB: v128_data.bb, CC: v128_data.cc, DD: v128_data.dd, EE: v128_data.ee, FF: v128_data.ff,
+        GG: v128_data.gg, HH: v128_data.hh, II: v128_data.ii, JJ: v128_data.jj, KK: v128_data.kk, LL: v128_data.ll, MM: v128_data.mm, NN: v128_data.nn,
+        OO: v128_data.oo, PP: v128_data.pp, QQ: v128_data.qq, RR: v128_data.rr, SS: v128_data.ss, TT: v128_data.tt, UU: v128_data.uu, VV: v128_data.vv,
+        WW: v128_data.ww, XX: v128_data.xx, YY: v128_data.yy, ZZ: v128_data.zz,
+        A2: v128_data.a2, B2: v128_data.b2, C2: v128_data.c2, D2: v128_data.d2, E2: v128_data.e2, F2: v128_data.f2, G2: v128_data.g2, H2: v128_data.h2,
+        I2: v128_data.i2, J2: v128_data.j2, K2: v128_data.k2, L2: v128_data.l2, M2: v128_data.m2, N2: v128_data.n2, O2: v128_data.o2, P2: v128_data.p2,
+        Q2: v128_data.q2, R2: v128_data.r2, S2: v128_data.s2, T2: v128_data.t2, U2: v128_data.u2, V2: v128_data.v2, W2: v128_data.w2, X2: v128_data.x2,
+        Y2: v128_data.y2, Z2: v128_data.z2, AA2: v128_data.aa2, BB2: v128_data.bb2, CC2: v128_data.cc2, DD2: v128_data.dd2, EE2: v128_data.ee2, FF2: v128_data.ff2,
+        GG2: v128_data.gg2, HH2: v128_data.hh2, II2: v128_data.ii2, JJ2: v128_data.jj2, KK2: v128_data.kk2, LL2: v128_data.ll2, MM2: v128_data.mm2, NN2: v128_data.nn2,
+        OO2: v128_data.oo2, PP2: v128_data.pp2, QQ2: v128_data.qq2, RR2: v128_data.rr2, SS2: v128_data.ss2, TT2: v128_data.tt2, UU2: v128_data.uu2, VV2: v128_data.vv2,
+        WW2: v128_data.ww2, XX2: v128_data.xx2, YY2: v128_data.yy2, ZZ2: v128_data.zz2,
+        A3: v128_data.a3, B3: v128_data.b3, C3: v128_data.c3, D3: v128_data.d3, E3: v128_data.e3, F3: v128_data.f3, G3: v128_data.g3, H3: v128_data.h3,
+        I3: v128_data.i3, J3: v128_data.j3, K3: v128_data.k3, L3: v128_data.l3, M3: v128_data.m3, N3: v128_data.n3, O3: v128_data.o3, P3: v128_data.p3,
+        Q3: v128_data.q3, R3: v128_data.r3, S3: v128_data.s3, T3: v128_data.t3, U3: v128_data.u3, V3: v128_data.v3, W3: v128_data.w3, X3: v128_data.x3,
+        Y3: v128_data.y3, Z3: v128_data.z3, AA3: v128_data.aa3, BB3: v128_data.bb3, CC3: v128_data.cc3, DD3: v128_data.dd3, EE3: v128_data.ee3, FF3: v128_data.ff3,
+        GG3: v128_data.gg3, HH3: v128_data.hh3, II3: v128_data.ii3, JJ3: v128_data.jj3, KK3: v128_data.kk3, LL3: v128_data.ll3, MM3: v128_data.mm3, NN3: v128_data.nn3,
+        OO3: v128_data.oo3, PP3: v128_data.pp3, QQ3: v128_data.qq3, RR3: v128_data.rr3, SS3: v128_data.ss3, TT3: v128_data.tt3, UU3: v128_data.uu3, VV3: v128_data.vv3,
+        WW3: v128_data.ww3, XX3: v128_data.xx3, YY3: v128_data.yy3, ZZ3: v128_data.zz3
+    }
+}
+
+void AddVectors128(v1, v2) {
+    return NewVector128(
+        v1.A + v2.A, v1.B + v2.B, v1.C + v2.C, v1.D + v2.D,
+        v1.E + v2.E, v1.F + v2.F, v1.G + v2.G, v1.H + v2.H,
+        v1.I + v2.I, v1.J + v2.J, v1.K + v2.K, v1.L + v2.L,
+        v1.M + v2.M, v1.N + v2.N, v1.O + v2.O, v1.P + v2.P,
+        v1.Q + v2.Q, v1.R + v2.R, v1.S + v2.S, v1.T + v2.T,
+        v1.U + v2.U, v1.V + v2.V, v1.W + v2.W, v1.X + v2.X,
+        v1.Y + v2.Y, v1.Z + v2.Z, v1.AA + v2.AA, v1.BB + v2.BB,
+        v1.CC + v2.CC, v1.DD + v2.DD, v1.EE + v2.EE, v1.FF + v2.FF,
+        v1.GG + v2.GG, v1.HH + v2.HH, v1.II + v2.II, v1.JJ + v2.JJ,
+        v1.KK + v2.KK, v1.LL + v2.LL, v1.MM + v2.MM, v1.NN + v2.NN,
+        v1.OO + v2.OO, v1.PP + v2.PP, v1.QQ + v2.QQ, v1.RR + v2.RR,
+        v1.SS + v2.SS, v1.TT + v2.TT, v1.UU + v2.UU, v1.VV + v2.VV,
+        v1.WW + v2.WW, v1.XX + v2.XX, v1.YY + v2.YY, v1.ZZ + v2.ZZ,
+        v1.A2 + v2.A2, v1.B2 + v2.B2, v1.C2 + v2.C2, v1.D2 + v2.D2,
+        v1.E2 + v2.E2, v1.F2 + v2.F2, v1.G2 + v2.G2, v1.H2 + v2.H2,
+        v1.I2 + v2.I2, v1.J2 + v2.J2, v1.K2 + v2.K2, v1.L2 + v2.L2,
+        v1.M2 + v2.M2, v1.N2 + v2.N2, v1.O2 + v2.O2, v1.P2 + v2.P2,
+        v1.Q2 + v2.Q2, v1.R2 + v2.R2, v1.S2 + v2.S2, v1.T2 + v2.T2,
+        v1.U2 + v2.U2, v1.V2 + v2.V2, v1.W2 + v2.W2, v1.X2 + v2.X2,
+        v1.Y2 + v2.Y2, v1.Z2 + v2.Z2, v1.AA2 + v2.AA2, v1.BB2 + v2.BB2,
+        v1.CC2 + v2.CC2, v1.DD2 + v2.DD2, v1.EE2 + v2.EE2, v1.FF2 + v2.FF2,
+        v1.GG2 + v2.GG2, v1.HH2 + v2.HH2, v1.II2 + v2.II2, v1.JJ2 + v2.JJ2,
+        v1.KK2 + v2.KK2, v1.LL2 + v2.LL2, v1.MM2 + v2.MM2, v1.NN2 + v2.NN2,
+        v1.OO2 + v2.OO2, v1.PP2 + v2.PP2, v1.QQ2 + v2.QQ2, v1.RR2 + v2.RR2,
+        v1.SS2 + v2.SS2, v1.TT2 + v2.TT2, v1.UU2 + v2.UU2, v1.VV2 + v2.VV2,
+        v1.WW2 + v2.WW2, v1.XX2 + v2.XX2, v1.YY2 + v2.YY2, v1.ZZ2 + v2.ZZ2
+    )
+}
+
+void SubtractVectors128(v1, v2) {
+    return NewVector128(
+        v1.A - v2.A, v1.B - v2.B, v1.C - v2.C, v1.D - v2.D,
+        v1.E - v2.E, v1.F - v2.F, v1.G - v2.G, v1.H - v2.H,
+        v1.I - v2.I, v1.J - v2.J, v1.K - v2.K, v1.L - v2.L,
+        v1.M - v2.M, v1.N - v2.N, v1.O - v2.O, v1.P - v2.P,
+        v1.Q - v2.Q, v1.R - v2.R, v1.S - v2.S, v1.T - v2.T,
+        v1.U - v2.U, v1.V - v2.V, v1.W - v2.W, v1.X - v2.X,
+        v1.Y - v2.Y, v1.Z - v2.Z, v1.AA - v2.AA, v1.BB - v2.BB,
+        v1.CC - v2.CC, v1.DD - v2.DD, v1.EE - v2.EE, v1.FF - v2.FF,
+        v1.GG - v2.GG, v1.HH - v2.HH, v1.II - v2.II, v1.JJ - v2.JJ,
+        v1.KK - v2.KK, v1.LL - v2.LL, v1.MM - v2.MM, v1.NN - v2.NN,
+        v1.OO - v2.OO, v1.PP - v2.PP, v1.QQ - v2.QQ, v1.RR - v2.RR,
+        v1.SS - v2.SS, v1.TT - v2.TT, v1.UU - v2.UU, v1.VV - v2.VV,
+        v1.WW - v2.WW, v1.XX - v2.XX, v1.YY - v2.YY, v1.ZZ - v2.ZZ,
+        v1.A2 - v2.A2, v1.B2 - v2.B2, v1.C2 - v2.C2, v1.D2 - v2.D2,
+        v1.E2 - v2.E2, v1.F2 - v2.F2, v1.G2 - v2.G2, v1.H2 - v2.H2,
+        v1.I2 - v2.I2, v1.J2 - v2.J2, v1.K2 - v2.K2, v1.L2 - v2.L2,
+        v1.M2 - v2.M2, v1.N2 - v2.N2, v1.O2 - v2.O2, v1.P2 - v2.P2,
+        v1.Q2 - v2.Q2, v1.R2 - v2.R2, v1.S2 - v2.S2, v1.T2 - v2.T2,
+        v1.U2 - v2.U2, v1.V2 - v2.V2, v1.W2 - v2.W2, v1.X2 - v2.X2,
+        v1.Y2 - v2.Y2, v1.Z2 - v2.Z2, v1.AA2 - v2.AA2, v1.BB2 - v2.BB2,
+        v1.CC2 - v2.CC2, v1.DD2 - v2.DD2, v1.EE2 - v2.EE2, v1.FF2 - v2.FF2,
+        v1.GG2 - v2.GG2, v1.HH2 - v2.HH2, v1.II2 - v2.II2, v1.JJ2 - v2.JJ2,
+        v1.KK2 - v2.KK2, v1.LL2 - v2.LL2, v1.MM2 - v2.MM2, v1.NN2 - v2.NN2,
+        v1.OO2 - v2.OO2, v1.PP2 - v2.PP2, v1.QQ2 - v2.QQ2, v1.RR2 - v2.RR2,
+        v1.SS2 - v2.SS2, v1.TT2 - v2.TT2, v1.UU2 - v2.UU2, v1.VV2 - v2.VV2,
+        v1.WW2 - v2.WW2, v1.XX2 - v2.XX2, v1.YY2 - v2.YY2, v1.ZZ2 - v2.ZZ2
+    )
+}
+
+void MultiplyVector128(_vector,_scalar) {
+    return NewVector128(
+        _scalar * _vector.A, _scalar * _vector.B, _scalar * _vector.C, _scalar * _vector.D,
+        _scalar * _vector.E, _scalar * _vector.F, _scalar * _vector.G, _scalar * _vector.H,
+        _scalar * _vector.I, _scalar * _vector.J, _scalar * _vector.K, _scalar * _vector.L,
+        _scalar * _vector.M, _scalar * _vector.N, _scalar * _vector.O, _scalar * _vector.P,
+        _scalar * _vector.Q, _scalar * _vector.R, _scalar * _vector.S, _scalar * _vector.T,
+        _scalar * _vector.U, _scalar * _vector.V, _scalar * _vector.W, _scalar * _vector.X,
+        _scalar * _vector.Y, _scalar * _vector.Z, _scalar * _vector.AA, _scalar * _vector.BB,
+        _scalar * _vector.CC, _scalar * _vector.DD, _scalar * _vector.EE, _scalar * _vector.FF,
+        _scalar * _vector.GG, _scalar * _vector.HH, _scalar * _vector.II, _scalar * _vector.JJ,
+        _scalar * _vector.KK, _scalar * _vector.LL, _scalar * _vector.MM, _scalar * _vector.NN,
+        _scalar * _vector.OO, _scalar * _vector.PP, _scalar * _vector.QQ, _scalar * _vector.RR,
+        _scalar * _vector.SS, _scalar * _vector.TT, _scalar * _vector.UU, _scalar * _vector.VV,
+        _scalar * _vector.WW, _scalar * _vector.XX, _scalar * _vector.YY, _scalar * _vector.ZZ,
+        _scalar * _vector.AA2, _scalar * _vector.BB2, _scalar * _vector.CC2, _scalar * _vector.DD2,
+        _scalar * _vector.EE2, _scalar * _vector.FF2, _scalar * _vector.GG2, _scalar * _vector.HH2,
+        _scalar * _vector.II2, _scalar * _vector.JJ2, _scalar * _vector.KK2, _scalar * _vector.LL2,
+        _scalar * _vector.MM2, _scalar * _vector.NN2, _scalar * _vector.OO2, _scalar * _vector.PP2,
+        _scalar * _vector.QQ2, _scalar * _vector.RR2, _scalar * _vector.SS2, _scalar * _vector.TT2,
+        _scalar * _vector.UU2, _scalar * _vector.VV2, _scalar * _vector.WW2, _scalar * _vector.XX2,
+        _scalar * _vector.YY2, _scalar * _vector.ZZ2
+    )
+}
+
+void Vector128ToString(v1) {
+    return console.Sprintf(
+        "(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v)",
+        v1.A + v2.A, v1.B + v2.B, v1.C + v2.C, v1.D + v2.D,
+        v1.E + v2.E, v1.F + v2.F, v1.G + v2.G, v1.H + v2.H,
+        v1.I + v2.I, v1.J + v2.J, v1.K + v2.K, v1.L + v2.L,
+        v1.M + v2.M, v1.N + v2.N, v1.O + v2.O, v1.P + v2.P,
+        v1.Q + v2.Q, v1.R + v2.R, v1.S + v2.S, v1.T + v2.T,
+        v1.U + v2.U, v1.V + v2.V, v1.W + v2.W, v1.X + v2.X,
+        v1.Y + v2.Y, v1.Z + v2.Z, v1.AA + v2.AA, v1.BB + v2.BB,
+        v1.CC + v2.CC, v1.DD + v2.DD, v1.EE + v2.EE, v1.FF + v2.FF,
+        v1.GG + v2.GG, v1.HH + v2.HH, v1.II + v2.II, v1.JJ + v2.JJ,
+        v1.KK + v2.KK, v1.LL + v2.LL, v1.MM + v2.MM, v1.NN + v2.NN,
+        v1.OO + v2.OO, v1.PP + v2.PP, v1.QQ + v2.QQ, v1.RR + v2.RR,
+        v1.SS + v2.SS, v1.TT + v2.TT, v1.UU + v2.UU, v1.VV + v2.VV,
+        v1.WW + v2.WW, v1.XX + v2.XX, v1.YY + v2.YY, v1.ZZ + v2.ZZ,
+        v1.A2 + v2.A2, v1.B2 + v2.B2, v1.C2 + v2.C2, v1.D2 + v2.D2,
+        v1.E2 + v2.E2, v1.F2 + v2.F2, v1.G2 + v2.G2, v1.H2 + v2.H2,
+        v1.I2 + v2.I2, v1.J2 + v2.J2, v1.K2 + v2.K2, v1.L2 + v2.L2,
+        v1.M2 + v2.M2, v1.N2 + v2.N2, v1.O2 + v2.O2, v1.P2 + v2.P2,
+        v1.Q2 + v2.Q2, v1.R2 + v2.R2, v1.S2 + v2.S2, v1.T2 + v2.T2,
+        v1.U2 + v2.U2, v1.V2 + v2.V2, v1.W2 + v2.W2, v1.X2 + v2.X2,
+        v1.Y2 + v2.Y2, v1.Z2 + v2.Z2, v1.AA2 + v2.AA2, v1.BB2 + v2.BB2,
+        v1.CC2 + v2.CC2, v1.DD2 + v2.DD2, v1.EE2 + v2.EE2, v1.FF2 + v2.FF2,
+        v1.GG2 + v2.GG2, v1.HH2 + v2.HH2, v1.II2 + v2.II2, v1.JJ2 + v2.JJ2,
+        v1.KK2 + v2.KK2, v1.LL2 + v2.LL2, v1.MM2 + v2.MM2, v1.NN2 + v2.NN2,
+        v1.OO2 + v2.OO2, v1.PP2 + v2.PP2, v1.QQ2 + v2.QQ2, v1.RR2 + v2.RR2,
+        v1.SS2 + v2.SS2, v1.TT2 + v2.TT2, v1.UU2 + v2.UU2, v1.VV2 + v2.VV2,
+        v1.WW2 + v2.WW2, v1.XX2 + v2.XX2, v1.YY2 + v2.YY2, v1.ZZ2 + v2.ZZ2
+    )
+}
+
+void Vector128Dot(NewVector128 v1, NewVector128 v2) {
+    return (
+        v1.A * v2.A + v1.B * v2.B + v1.C * v2.C + v1.D * v2.D +
+        v1.E * v2.E + v1.F * v2.F + v1.G * v2.G + v1.H * v2.H +
+        v1.I * v2.I + v1.J * v2.J + v1.K * v2.K + v1.L * v2.L +
+        v1.M * v2.M + v1.N * v2.N + v1.O * v2.O + v1.P * v2.P +
+        v1.Q * v2.Q + v1.R * v2.R + v1.S * v2.S + v1.T * v2.T +
+        v1.U * v2.U + v1.V * v2.V + v1.W * v2.W + v1.X * v2.X +
+        v1.Y * v2.Y + v1.Z * v2.Z +
+        v1.AA * v2.AA + v1.BB * v2.BB + v1.CC * v2.CC + v1.DD * v2.DD +
+        v1.EE * v2.EE + v1.FF * v2.FF + v1.GG * v2.GG + v1.HH * v2.HH +
+        v1.II * v2.II + v1.JJ * v2.JJ + v1.KK * v2.KK + v1.LL * v2.LL +
+        v1.MM * v2.MM + v1.NN * v2.NN + v1.OO * v2.OO + v1.PP * v2.PP +
+        v1.QQ * v2.QQ + v1.RR * v2.RR + v1.SS * v2.SS + v1.TT * v2.TT +
+        v1.UU * v2.UU + v1.VV * v2.VV + v1.WW * v2.WW + v1.XX * v2.XX +
+        v1.YY * v2.YY + v1.ZZ * v2.ZZ +
+        v1.AA2 * v2.AA2 + v1.BB2 * v2.BB2 + v1.CC2 * v2.CC2 + v1.DD2 * v2.DD2 +
+        v1.EE2 * v2.EE2 + v1.FF2 * v2.FF2 + v1.GG2 * v2.GG2 + v1.HH2 * v2.HH2 +
+        v1.II2 * v2.II2 + v1.JJ2 * v2.JJ2 + v1.KK2 * v2.KK2 + v1.LL2 * v2.LL2 +
+        v1.MM2 * v2.MM2 + v1.NN2 * v2.NN2 + v1.OO2 * v2.OO2 + v1.PP2 * v2.PP2 +
+        v1.QQ2 * v2.QQ2 + v1.RR2 * v2.RR2 + v1.SS2 * v2.SS2 + v1.TT2 * v2.TT2 +
+        v1.UU2 * v2.UU2 + v1.VV2 * v2.VV2 + v1.WW2 * v2.WW2 + v1.XX2 * v2.XX2 +
+        v1.YY2 * v2.YY2 + v1.ZZ2 * v2.ZZ2
+    );
+}
+
+void Vector128Magnitude(vector) {
+    let sum = (
+        vector.A * vector.A + vector.B * vector.B + vector.C * vector.C + vector.D * vector.D +
+        vector.E * vector.E + vector.F * vector.F + vector.G * vector.G + vector.H * vector.H +
+        vector.I * vector.I + vector.J * vector.J + vector.K * vector.K + vector.L * vector.L +
+        vector.M * vector.M + vector.N * vector.N + vector.O * vector.O + vector.P * vector.P +
+        vector.Q * vector.Q + vector.R * vector.R + vector.S * vector.S + vector.T * vector.T +
+        vector.U * vector.U + vector.V * vector.V + vector.W * vector.W + vector.X * vector.X +
+        vector.Y * vector.Y + vector.Z * vector.Z + vector.AA * vector.AA + vector.BB * vector.BB +
+        vector.CC * vector.CC + vector.DD * vector.DD + vector.EE * vector.EE + vector.FF * vector.FF +
+        vector.GG * vector.GG + vector.HH * vector.HH + vector.II * vector.II + vector.JJ * vector.JJ +
+        vector.KK * vector.KK + vector.LL * vector.LL + vector.MM * vector.MM + vector.NN * vector.NN +
+        vector.OO * vector.OO + vector.PP * vector.PP + vector.QQ * vector.QQ + vector.RR * vector.RR +
+        vector.SS * vector.SS + vector.TT * vector.TT + vector.UU * vector.UU + vector.VV * vector.VV +
+        vector.WW * vector.WW + vector.XX * vector.XX + vector.YY * vector.YY + vector.ZZ * vector.ZZ +
+        vector.AA2 * vector.AA2 + vector.BB2 * vector.BB2 + vector.CC2 * vector.CC2 + vector.DD2 * vector.DD2 +
+        vector.EE2 * vector.EE2 + vector.FF2 * vector.FF2 + vector.GG2 * vector.GG2 + vector.HH2 * vector.HH2 +
+        vector.II2 * vector.II2 + vector.JJ2 * vector.JJ2 + vector.KK2 * vector.KK2 + vector.LL2 * vector.LL2 +
+        vector.MM2 * vector.MM2 + vector.NN2 * vector.NN2 + vector.OO2 * vector.OO2 + vector.PP2 * vector.PP2 +
+        vector.QQ2 * vector.QQ2 + vector.RR2 * vector.RR2 + vector.SS2 * vector.SS2 + vector.TT2 * vector.TT2 +
+        vector.UU2 * vector.UU2 + vector.VV2 * vector.VV2 + vector.WW2 * vector.WW2 + vector.XX2 * vector.XX2 +
+        vector.YY2 * vector.YY2 + vector.ZZ2 * vector.ZZ2
+    )
+    return math.Sqrt(sum)
+}

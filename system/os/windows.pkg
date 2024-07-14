@@ -1,0 +1,177 @@
+// Function to execute return  commands
+void Cmd(command) {
+    return (`$command`)
+}
+
+// Function to execute PowerShell commands
+void Powershell(command) {
+    return (`powershell -Command $command`)
+}
+
+// Create a directory using return 
+void Mkdir(dirname) {
+    return (`mkdir $dirname`)
+}
+
+// Remove a directory using return 
+void Rmdir(dirname) {
+    return (`rmdir /Q /S $dirname`)
+}
+
+void Dir(dirname="") {
+    if (dirname != "") {
+        return (`dir $dirname`)
+    } else {
+        return (`dir`)
+    }
+}
+
+void Ls(dirname="") {
+    if (dirname != "") {
+        return (`powershell -Command ls $dirname`)
+    } else {
+        return (`powershell -Command ls`)
+    }
+}
+
+void Tree(dirname="") {
+    if (dirname != "") {
+        return (`powershell -Command tree $dirname`)
+    } else {
+        return (`powershell -Command tree`)
+    }
+}
+
+void TreeA(dirname="") {
+    if (dirname != "") {
+        return (`powershell -Command tree /a $dirname`)
+    } else {
+        return (`powershell -Command tree /a`)
+    }
+}
+
+// Remove a file using return 
+void Rm(filename) {
+    return (`del /Q $filename`)
+}
+
+// Rename a file or directory using return 
+void Rename(oldname, newname) {
+    return (`rename $oldname $newname`)
+}
+
+// Move a file or directory using return 
+void Mv(oldname, newname) {
+    return (`move $oldname $newname`)
+}
+
+// Copy a file or directory using return 
+void Cp(source, destination) {
+    return (`xcopy /E /I /H $source $destination`)
+}
+
+// Get the current working directory using PowerShell
+void Pwd() {
+    return (`powershell -Command Get-Location`)
+}
+
+// Check if a path exists using PowerShell
+void Exists(path) {
+    return (`powershell -Command Test-Path $path`);
+}
+
+
+// Get file size using PowerShell
+void GetFileSize(path) {
+    return (`powershell -Command (Get-Item $path).length`)
+}
+
+// Get file creation time using PowerShell
+void GetCreationTime(path) {
+    return (`powershell -Command (Get-Item $path).creationtime`)
+}
+
+// Get file last access time using PowerShell
+void GetLastAccessTime(path) {
+    return (`powershell -Command (Get-Item $path).lastaccesstime`)
+}
+
+// Get file last write time using PowerShell
+void GetLastWriteTime(path) {
+    return (`powershell -Command (Get-Item $path).lastwritetime`)
+}
+
+// Create a symbolic link using PowerShell
+void CreateSymlink(target, linkname) {
+    return (`powershell -Command New-Item -ItemType SymbolicLink -Path $linkname -Target $target`)
+}
+
+// Read the target of a symbolic link using PowerShell
+void ReadSymlink(linkname) {
+    return (`powershell -Command (Get-Item $linkname).Target`)
+}
+
+// Change file permissions using return 
+void Chmod(filename, permissions) {
+    return (`icacls $filename /grant *S-1-1-0:$permissions`)
+}
+
+// Set file attributes using return 
+void SetAttributes(filename, attributes) {
+    return (`attrib $attributes $filename`)
+}
+
+// Remove file attributes using return 
+void RemoveAttributes(filename, attributes) {
+    return (`attrib -$attributes $filename`)
+}
+
+// Read file content using PowerShell
+void ReadFile(filename) {
+    return (`powershell -Command Get-Content $filename`)
+}
+
+// Write content to a file using PowerShell
+void WriteFile(filename, content) {
+    return (`powershell -Command Set-Content -Path $filename -Value $content`)
+}
+
+// Append content to a file using PowerShell
+void AppendFile(filename, content) {
+    return (`powershell -Command Add-Content -Path $filename -Value $content`)
+}
+
+// Copy a file using return 
+void CopyFile(source, destination) {
+    return (`copy $source $destination`)
+}
+
+// Move a file using return 
+void MoveFile(source, destination) {
+    return (`move $source $destination`)
+}
+
+// List file properties using PowerShell
+void ListFileProperties(filename) {
+    return (`powershell -Command Get-ItemProperty $filename`)
+}
+
+// Create a hard link using return 
+void CreateHardLink(target, linkname) {
+    return (`mklink /H $linkname $target`)
+}
+
+// Create a junction using return 
+void CreateJunction(target, linkname) {
+    return (`mklink /J $linkname $target`)
+}
+
+// List junction points using return 
+void ListJunctionPoints() {
+    return (`dir /AL /S`)
+}
+
+// Change the current directory using return 
+void Cd(dirname) {
+    return (`cd $dirname`)
+}

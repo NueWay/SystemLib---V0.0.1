@@ -1,0 +1,3235 @@
+// Finance Calculations Library
+
+// Compound Interest
+void CompoundInterest(principal, rate, time, n) {
+    return principal * pow(1 + (rate / n), n * time)
+}
+
+// Future Value of an Investment
+void FutureValue(presentValue, rate, time) {
+    return presentValue * pow(1 + rate, time)
+}
+
+// Monthly Mortgage Payment
+void MortgagePayment(principal, annualRate, years) {
+    let monthlyRate = annualRate / 12
+    let numberOfPayments = years * 12
+    return (principal * monthlyRate) / (1 - pow(1 + monthlyRate, -numberOfPayments))
+}
+
+// Simple Interest
+void SimpleInterest(principal, rate, time) {
+    return principal * rate * time
+}
+
+// Present Value of an Annuity
+void PresentValueAnnuity(payment, rate, periods) {
+    return payment * (1 - pow(1 + rate, -periods)) / rate
+}
+
+// Net Present Value
+void NetPresentValue(cashFlows, rate) {
+    let npv = 0
+    for i = 0; i < len(cashFlows); i++ {
+        npv += cashFlows[i] / pow(1 + rate, i + 1)
+    }
+    return npv
+}
+
+// Internal Rate of Return (IRR)
+void IRR(cashFlows) {
+    let irr = 0.1
+    let npv = NetPresentValue(cashFlows, irr)
+    while abs(npv) > 1e-6 {
+        irr -= npv / NetPresentValueDerivative(cashFlows, irr)
+        npv = NetPresentValue(cashFlows, irr)
+    }
+    return irr
+}
+
+void NetPresentValueDerivative(cashFlows, rate) {
+    let derivative = 0
+    for i = 0; i < len(cashFlows); i++ {
+        derivative -= (i + 1) * cashFlows[i] / pow(1 + rate, i + 2)
+    }
+    return derivative
+}
+
+// Loan Payment
+void LoanPayment(principal, rate, periods) {
+    return principal * rate / (1 - pow(1 + rate, -periods))
+}
+
+// Future Value of an Ordinary Annuity
+void FutureValueAnnuity(payment, rate, periods) {
+    return payment * (pow(1 + rate, periods) - 1) / rate
+}
+
+// Break-Even Point
+void BreakEvenPoint(fixedCosts, pricePerUnit, variableCostPerUnit) {
+    return fixedCosts / (pricePerUnit - variableCostPerUnit)
+}
+
+// Profit Margin
+void ProfitMargin(netIncome, revenue) {
+    return netIncome / revenue
+}
+
+// Debt to Equity Ratio
+void DebtToEquity(totalDebt, totalEquity) {
+    return totalDebt / totalEquity
+}
+
+// Return on Equity (ROE)
+void ROE(netIncome, shareholdersEquity) {
+    return netIncome / shareholdersEquity
+}
+
+// Return on Investment (ROI)
+void ROI(gainFromInvestment, costOfInvestment) {
+    return (gainFromInvestment - costOfInvestment) / costOfInvestment
+}
+
+// Earnings Per Share (EPS)
+void EPS(netIncome, numberOfShares) {
+    return netIncome / numberOfShares
+}
+
+// Price to Earnings Ratio (P/E Ratio)
+void PERatio(marketPricePerShare, earningsPerShare) {
+    return marketPricePerShare / earningsPerShare
+}
+
+// Dividend Yield
+void DividendYield(annualDividendsPerShare, pricePerShare) {
+    return annualDividendsPerShare / pricePerShare
+}
+
+// Capital Asset Pricing Model (CAPM)
+void CAPM(riskFreeRate, beta, marketReturn) {
+    return riskFreeRate + beta * (marketReturn - riskFreeRate)
+}
+
+// Weighted Average Cost of Capital (WACC)
+void WACC(equity, debt, costOfEquity, costOfDebt, taxRate) {
+    let total = equity + debt
+    return (equity / total) * costOfEquity + (debt / total) * costOfDebt * (1 - taxRate)
+}
+
+// Dividend Payout Ratio
+void DividendPayoutRatio(dividends, netIncome) {
+    return dividends / netIncome
+}
+
+// Operating Cash Flow (OCF)
+void OCF(netIncome, depreciation, changeInWorkingCapital, capitalExpenditures) {
+    return netIncome + depreciation - changeInWorkingCapital - capitalExpenditures
+}
+
+// Free Cash Flow (FCF)
+void FCF(operatingCashFlow, capitalExpenditures) {
+    return operatingCashFlow - capitalExpenditures
+}
+
+// Current Ratio
+void CurrentRatio(currentAssets, currentLiabilities) {
+    return currentAssets / currentLiabilities
+}
+
+// Quick Ratio (Acid-Test Ratio)
+void QuickRatio(currentAssets, inventory, currentLiabilities) {
+    return (currentAssets - inventory) / currentLiabilities
+}
+
+// Working Capital
+void WorkingCapital(currentAssets, currentLiabilities) {
+    return currentAssets - currentLiabilities
+}
+
+// Inventory Turnover Ratio
+void InventoryTurnover(costOfGoodsSold, averageInventory) {
+    return costOfGoodsSold / averageInventory
+}
+
+// Accounts Receivable Turnover Ratio
+void ReceivableTurnover(netCreditSales, averageAccountsReceivable) {
+    return netCreditSales / averageAccountsReceivable
+}
+
+// Payback Period
+void PaybackPeriod(initialInvestment, annualCashFlow) {
+    return initialInvestment / annualCashFlow
+}
+
+// Contribution Margin
+void ContributionMargin(salesRevenue, variableCosts) {
+    return salesRevenue - variableCosts
+}
+
+// Operating Income
+void OperatingIncome(grossProfit, operatingExpenses) {
+    return grossProfit - operatingExpenses
+}
+
+// Economic Order Quantity (EOQ)
+void EOQ(demand, orderingCost, holdingCost) {
+    return sqrt((2 * demand * orderingCost) / holdingCost)
+}
+
+// Market Capitalization
+void MarketCapitalization(pricePerShare, numberOfShares) {
+    return pricePerShare * numberOfShares
+}
+
+// Interest Coverage Ratio
+void InterestCoverageRatio(ebit, interestExpense) {
+    return ebit / interestExpense
+}
+
+// Dividend Cover
+void DividendCover(netIncome, dividends) {
+    return netIncome / dividends
+}
+
+// Total Asset Turnover
+void TotalAssetTurnover(sales, totalAssets) {
+    return sales / totalAssets
+}
+
+// Equity Multiplier
+void EquityMultiplier(totalAssets, totalEquity) {
+    return totalAssets / totalEquity
+}
+
+// Dupont Analysis
+void DupontAnalysis(netIncome, sales, totalAssets, totalEquity) {
+    let profitMargin = netIncome / sales
+    let assetTurnover = sales / totalAssets
+    let equityMultiplier = totalAssets / totalEquity
+    return profitMargin * assetTurnover * equityMultiplier
+}
+
+// Net Working Capital Turnover
+void NetWorkingCapitalTurnover(sales, netWorkingCapital) {
+    return sales / netWorkingCapital
+}
+
+// Price to Book Ratio (P/B Ratio)
+void PBRatio(marketPricePerShare, bookValuePerShare) {
+    return marketPricePerShare / bookValuePerShare
+}
+
+// Dividend Discount Model (DDM)
+void DDM(dividend, discountRate, growthRate) {
+    return dividend / (discountRate - growthRate)
+}
+
+// Gordon Growth Model (GGM)
+void GGM(dividend, discountRate, growthRate) {
+    return dividend * (1 + growthRate) / (discountRate - growthRate)
+}
+
+// Price to Sales Ratio (P/S Ratio)
+void PSRatio(marketPricePerShare, salesPerShare) {
+    return marketPricePerShare / salesPerShare
+}
+
+// Price to Cash Flow Ratio (P/CF Ratio)
+void PCFRatio(marketPricePerShare, cashFlowPerShare) {
+    return marketPricePerShare / cashFlowPerShare
+}
+
+// PEG Ratio
+void PEGRatio(priceEarningsRatio, annualEarningsGrowth) {
+    return priceEarningsRatio / annualEarningsGrowth
+}
+
+// Altman Z-Score
+void AltmanZScore(workingCapital, retainedEarnings, ebit, marketValueOfEquity, totalLiabilities, sales, totalAssets) {
+    return 1.2 * (workingCapital / totalAssets) + 1.4 * (retainedEarnings / totalAssets) + 3.3 * (ebit / totalAssets) + 0.6 * (marketValueOfEquity / totalLiabilities) + 1.0 * (sales / totalAssets)
+}
+
+// Capital Expenditure (CapEx)
+void CapEx(currentPP&E, previousPP&E, depreciation) {
+    return (currentPP&E - previousPP&E) + depreciation
+}
+
+// Effective Tax Rate
+void EffectiveTaxRate(taxExpense, preTaxIncome) {
+    return taxExpense / preTaxIncome
+}
+
+// Retention Ratio
+void RetentionRatio(netIncome, dividends) {
+    return (netIncome - dividends) / netIncome
+}
+
+// Earnings Yield
+void EarningsYield(earningsPerShare, marketPricePerShare) {
+    return earningsPerShare / marketPricePerShare
+}
+
+// Capital Intensity
+void CapitalIntensity(totalAssets, sales) {
+    return totalAssets / sales
+}
+
+// Book Value Per Share (BVPS)
+void BVPS(totalEquity, numberOfShares) {
+    return totalEquity / numberOfShares
+}
+
+// Cash Ratio
+void CashRatio(cash, cashEquivalents, currentLiabilities) {
+    return (cash + cashEquivalents) / currentLiabilities
+}
+
+// Operating Margin
+void OperatingMargin(operatingIncome, revenue) {
+    return operating
+        return operatingIncome / revenue
+}
+
+// Net Profit Margin
+void NetProfitMargin(netIncome, revenue) {
+    return netIncome / revenue
+}
+
+// Gross Profit Margin
+void GrossProfitMargin(grossProfit, revenue) {
+    return grossProfit / revenue
+}
+
+// Return on Assets (ROA)
+void ROA(netIncome, totalAssets) {
+    return netIncome / totalAssets
+}
+
+// Return on Investment Capital (ROIC)
+void ROIC(netIncome, dividends, totalCapital) {
+    return (netIncome - dividends) / totalCapital
+}
+
+// Cash Flow to Debt Ratio
+void CashFlowToDebt(cashFlowFromOperations, totalDebt) {
+    return cashFlowFromOperations / totalDebt
+}
+
+// Cash Flow per Share
+void CashFlowPerShare(cashFlowFromOperations, numberOfShares) {
+    return cashFlowFromOperations / numberOfShares
+}
+
+// Current Liability Coverage Ratio
+void CurrentLiabilityCoverage(cashFlowFromOperations, currentLiabilities) {
+    return cashFlowFromOperations / currentLiabilities
+}
+
+// Sales Growth Rate
+void SalesGrowthRate(currentSales, previousSales) {
+    return (currentSales - previousSales) / previousSales
+}
+
+// Dividend Growth Rate
+void DividendGrowthRate(currentDividend, previousDividend) {
+    return (currentDividend - previousDividend) / previousDividend
+}
+
+// Asset Turnover Ratio
+void AssetTurnover(sales, totalAssets) {
+    return sales / totalAssets
+}
+
+// Inventory to Working Capital Ratio
+void InventoryToWorkingCapital(inventory, workingCapital) {
+    return inventory / workingCapital
+}
+
+// Capital Adequacy Ratio (CAR)
+void CAR(tier1Capital, tier2Capital, riskWeightedAssets) {
+    return (tier1Capital + tier2Capital) / riskWeightedAssets
+}
+
+// Loan to Value Ratio (LTV)
+void LTV(loanAmount, appraisedValue) {
+    return loanAmount / appraisedValue
+}
+
+// Dividend Coverage Ratio
+void DividendCoverageRatio(netIncome, dividendsPaid) {
+    return netIncome / dividendsPaid
+}
+
+// Cost of Debt
+void CostOfDebt(interestExpense, totalDebt) {
+    return interestExpense / totalDebt
+}
+
+// Cost of Equity using DDM
+void CostOfEquityDDM(dividend, currentStockPrice, dividendGrowthRate) {
+    return (dividend / currentStockPrice) + dividendGrowthRate
+}
+
+// Free Cash Flow to Equity (FCFE)
+void FCFE(cashFlowFromOperations, capitalExpenditures, netBorrowing) {
+    return cashFlowFromOperations - capitalExpenditures + netBorrowing
+}
+
+// Debt Service Coverage Ratio (DSCR)
+void DSCR(netOperatingIncome, totalDebtService) {
+    return netOperatingIncome / totalDebtService
+}
+
+// Financial Leverage Ratio
+void FinancialLeverageRatio(totalAssets, totalEquity) {
+    return totalAssets / totalEquity
+}
+
+// Effective Annual Rate (EAR)
+void EAR(nominalRate, compoundingPeriods) {
+    return pow(1 + nominalRate / compoundingPeriods, compoundingPeriods) - 1
+}
+
+// Times Interest Earned (TIE)
+void TIE(ebit, interestExpense) {
+    return ebit / interestExpense
+}
+
+// Equity Ratio
+void EquityRatio(totalEquity, totalAssets) {
+    return totalEquity / totalAssets
+}
+
+// Book Value
+void BookValue(totalAssets, totalLiabilities) {
+    return totalAssets - totalLiabilities
+}
+
+// Enterprise Value (EV)
+void EnterpriseValue(marketCapitalization, totalDebt, cashAndCashEquivalents) {
+    return marketCapitalization + totalDebt - cashAndCashEquivalents
+}
+
+// Market Value Added (MVA)
+void MVA(marketValue, capitalInvested) {
+    return marketValue - capitalInvested
+}
+
+// Economic Value Added (EVA)
+void EVA(netOperatingProfitAfterTax, capitalInvested, weightedAverageCostOfCapital) {
+    return netOperatingProfitAfterTax - (capitalInvested * weightedAverageCostOfCapital)
+}
+
+// Cash Conversion Cycle (CCC)
+void CCC(daysInventoryOutstanding, daysSalesOutstanding, daysPayablesOutstanding) {
+    return daysInventoryOutstanding + daysSalesOutstanding - daysPayablesOutstanding
+}
+
+// Days Sales Outstanding (DSO)
+void DSO(accountsReceivable, totalCreditSales, days) {
+    return (accountsReceivable / totalCreditSales) * days
+}
+
+// Days Payables Outstanding (DPO)
+void DPO(accountsPayable, costOfGoodsSold, days) {
+    return (accountsPayable / costOfGoodsSold) * days
+}
+
+// Days Inventory Outstanding (DIO)
+void DIO(inventory, costOfGoodsSold, days) {
+    return (inventory / costOfGoodsSold) * days
+}
+
+// Operating Cycle
+void OperatingCycle(daysInventoryOutstanding, daysSalesOutstanding) {
+    return daysInventoryOutstanding + daysSalesOutstanding
+}
+
+// Defensive Interval Ratio (DIR)
+void DIR(currentAssets, dailyOperatingExpenses) {
+    return currentAssets / dailyOperatingExpenses
+}
+
+// Gross Profit
+void GrossProfit(revenue, costOfGoodsSold) {
+    return revenue - costOfGoodsSold
+}
+
+// Operating Profit
+void OperatingProfit(grossProfit, operatingExpenses) {
+    return grossProfit - operatingExpenses
+}
+
+// Net Operating Profit After Tax (NOPAT)
+void NOPAT(operatingIncome, taxRate) {
+    return operatingIncome * (1 - taxRate)
+}
+
+// Free Cash Flow to Firm (FCFF)
+void FCFF(netIncome, nonCashCharges, changeInWorkingCapital, capitalExpenditures) {
+    return netIncome + nonCashCharges - changeInWorkingCapital - capitalExpenditures
+}
+
+// Net Debt
+void NetDebt(totalDebt, cashAndCashEquivalents) {
+    return totalDebt - cashAndCashEquivalents
+}
+
+// Levered Beta
+void LeveredBeta(unleveredBeta, taxRate, debt, equity) {
+    return unleveredBeta * (1 + ((1 - taxRate) * (debt / equity)))
+}
+
+// Unlevered Beta
+void UnleveredBeta(leveredBeta, taxRate, debt, equity) {
+    return leveredBeta / (1 + ((1 - taxRate) * (debt / equity)))
+}
+
+// Retained Earnings
+void RetainedEarnings(beginningRE, netIncome, dividends) {
+    return beginningRE + netIncome - dividends
+}
+
+// Accounts Receivable Turnover
+void AccountsReceivableTurnover(netCreditSales, averageAccountsReceivable) {
+    return netCreditSales / averageAccountsReceivable
+}
+
+// Accounts Payable Turnover
+void AccountsPayableTurnover(costOfGoodsSold, averageAccountsPayable) {
+    return costOfGoodsSold / averageAccountsPayable
+}
+
+// Financial Stability Indicator (FSI)
+void FSI(currentAssets, totalAssets, currentLiabilities, totalLiabilities) {
+    return (currentAssets / totalAssets) / (currentLiabilities / totalLiabilities)
+}
+
+// Tax Burden Ratio
+void TaxBurdenRatio(netIncome, ebt) {
+    return netIncome / ebt
+}
+
+// Interest Burden Ratio
+void InterestBurdenRatio(ebt, ebit) {
+    return ebt / ebit
+}
+
+// Financial Risk Ratio
+void FinancialRiskRatio(totalLiabilities, totalEquity) {
+    return totalLiabilities / totalEquity
+}
+
+// Debt to Capital Ratio
+void DebtToCapital(totalDebt, totalCapital) {
+    return totalDebt / totalCapital
+}
+
+// Revenue Per Employee
+void RevenuePerEmployee(totalRevenue, numberOfEmployees) {
+    return totalRevenue / numberOfEmployees
+}
+
+// Profit Per Employee
+void ProfitPerEmployee(netIncome, numberOfEmployees) {
+    return netIncome / numberOfEmployees
+}
+
+// Revenue Growth Rate
+void RevenueGrowthRate(currentRevenue, previousRevenue) {
+    return (currentRevenue - previousRevenue) / previousRevenue
+}
+
+// Investment Turnover Ratio
+void InvestmentTurnover(netSales, averageInvestment) {
+    return netSales / averageInvestment
+}
+
+// Working Capital Ratio
+void WorkingCapitalRatio(netSales, workingCapital) {
+    return netSales / workingCapital
+}
+
+// Total Expense Ratio
+void TotalExpenseRatio(totalExpenses, netSales) {
+    return totalExpenses / netSales
+}
+
+// Sustainable Growth Rate (SGR)
+void SGR(returnOnEquity, retentionRatio) {
+    return returnOnEquity * retentionRatio
+}
+
+// Dividend Retention Ratio
+void DividendRetentionRatio(earningsPerShare, dividendsPerShare) {
+    return (earningsPerShare - dividendsPerShare) / earningsPerShare
+}
+
+// Fixed Charge Coverage Ratio
+void FixedChargeCoverageRatio(ebit, fixedCharges) {
+    return (ebit + fixedCharges) / fixedCharges
+}
+
+// Operating Profit Margin
+void OperatingProfitMargin(operatingProfit, revenue) {
+    return operatingProfit / revenue
+}
+
+// Liquidity Coverage Ratio (LCR)
+void LCR(highQualityLiquidAssets, totalNetCashOutflows) {
+    return highQualityLiquidAssets / totalNetCashOutflows
+}
+
+// Dividend Pay-Out Ratio
+void DividendPayoutRatio(annualDividendsPerShare, earningsPerShare) {
+    return annualDividendsPerShare / earningsPerShare
+}
+
+// Earnings Retention Ratio
+void EarningsRetentionRatio(netIncome, dividends) {
+    return (netIncome - dividends) / netIncome
+}
+
+// Investment Multiplier
+void InvestmentMultiplier(investment, income) {
+    return income / investment
+}
+
+// Capital Turnover Ratio
+void CapitalTurnover(sales, capitalEmployed) {
+    return sales / capitalEmployed
+}
+
+// Leverage Ratio
+void LeverageRatio(totalAssets, totalEquity) {
+    return totalAssets / totalEquity
+}
+
+// Times Preferred Dividend Earned Ratio
+void TimesPreferredDividendEarned(netIncome, preferredDividends) {
+    return netIncome / preferredDividends
+}
+
+
+// Market to Book Ratio
+void MarketToBookRatio(marketPricePerShare, bookValuePerShare) {
+    return marketPricePerShare / bookValuePerShare
+}
+
+// Long Term Debt to Capitalization Ratio
+void LongTermDebtToCapitalization(longTermDebt, totalCapitalization) {
+    return longTermDebt / totalCapitalization
+}
+
+// Long Term Debt to Equity Ratio
+void LongTermDebtToEquity(longTermDebt, totalEquity) {
+    return longTermDebt / totalEquity
+}
+
+// Long Term Debt to Total Asset Ratio
+void LongTermDebtToTotalAsset(longTermDebt, totalAssets) {
+    return longTermDebt / totalAssets
+}
+
+// Interest Coverage
+void InterestCoverage(ebit, interestExpense) {
+    return ebit / interestExpense
+}
+
+// Debt Service Coverage
+void DebtServiceCoverage(netOperatingIncome, totalDebtService) {
+    return netOperatingIncome / totalDebtService
+}
+
+// Current Yield
+void CurrentYield(annualInterest, marketPrice) {
+    return annualInterest / marketPrice
+}
+
+// Intrinsic Value
+void IntrinsicValue(earningsPerShare, growthRate, discountRate) {
+    return (earningsPerShare * (1 + growthRate)) / (discountRate - growthRate)
+}
+
+// Dividend Discount Model
+void DividendDiscountModel(dividend, discountRate, growthRate) {
+    return dividend / (discountRate - growthRate)
+}
+
+// Risk Adjusted Return on Capital (RAROC)
+void RAROC(netIncome, costOfCapital, economicCapital) {
+    return netIncome / (costOfCapital * economicCapital)
+}
+
+// Weighted Average Maturity (WAM)
+void WeightedAverageMaturity(weightedMaturity, investmentAmount) {
+    return weightedMaturity / investmentAmount
+}
+
+// Modified Duration
+void ModifiedDuration(macaulayDuration, yield) {
+    return macaulayDuration / (1 + yield)
+}
+
+// Asset-Backed Securities (ABS)
+void AssetBackedSecurities(totalAssets, outstandingShares) {
+    return totalAssets / outstandingShares
+}
+
+// Average Rate of Return (ARR)
+void AverageRateOfReturn(profit, initialInvestment) {
+    return profit / initialInvestment
+}
+
+// Coupon Rate
+void CouponRate(interestPayments, faceValue) {
+    return interestPayments / faceValue
+}
+
+// Cost of Preference Share Capital
+void CostOfPreferenceShareCapital(preferredDividends, marketPrice) {
+    return preferredDividends / marketPrice
+}
+
+// Discount Yield
+void DiscountYield(faceValue, marketPrice) {
+    return (faceValue - marketPrice) / faceValue
+}
+
+// Dividend Payout Ratio
+void DividendPayoutRatio(dividends, netIncome) {
+    return dividends / netIncome
+}
+
+// Operating Cash Flow Ratio
+void OperatingCashFlowRatio(cashFlowFromOperations, marketPrice) {
+    return cashFlowFromOperations / marketPrice
+}
+
+// Return on Average Assets (ROAA)
+void ROAA(netIncome, averageAssets) {
+    return netIncome / averageAssets
+}
+
+// Return on Average Equity (ROAE)
+void ROAE(netIncome, averageEquity) {
+    return netIncome / averageEquity
+}
+
+// Return on Invested Capital (ROIC)
+void ROIC(netIncome, totalCapital) {
+    return netIncome / totalCapital
+}
+
+// Return on Net Assets (RONA)
+void RONA(netIncome, netAssets) {
+    return netIncome / netAssets
+}
+
+// Return on Total Assets (ROTA)
+void ROTA(netIncome, totalAssets) {
+    return netIncome / totalAssets
+}
+
+// Return on Total Investment (ROTI)
+void ROTI(netIncome, totalInvestment) {
+    return netIncome / totalInvestment
+}
+
+// Return on Capital Employed (ROCE)
+void ROCE(netIncome, capitalEmployed) {
+    return netIncome / capitalEmployed
+}
+
+// Return on Tangible Equity (ROTE)
+void ROTE(netIncome, tangibleEquity) {
+    return netIncome / tangibleEquity
+}
+
+// Real Interest Rate
+void RealInterestRate(nominalInterestRate, inflationRate) {
+    return (1 + nominalInterestRate) / (1 + inflationRate) - 1
+}
+
+// Equity Risk Premium
+void EquityRiskPremium(expectedReturn, riskFreeRate) {
+    return expectedReturn - riskFreeRate
+}
+
+// Debt Ratio
+void DebtRatio(totalDebt, totalAssets) {
+    return totalDebt / totalAssets
+}
+
+// Debt to EBITDA Ratio
+void DebtToEBITDARatio(totalDebt, ebitda) {
+    return totalDebt / ebitda
+}
+
+// Cash Conversion Efficiency (CCE)
+void CCE(revenue, operatingCashFlow) {
+    return operatingCashFlow / revenue
+}
+
+// Financial Sustainability Ratio (FSR)
+void FSR(profit, sales) {
+    return profit / sales
+}
+
+// Total Capital Ratio
+void TotalCapitalRatio(totalCapital, totalAssets) {
+    return totalCapital / totalAssets
+}
+
+// Interest Expense Ratio
+void InterestExpenseRatio(interestExpense, revenue) {
+    return interestExpense / revenue
+}
+
+// Financial Expense Ratio
+void FinancialExpenseRatio(financialExpenses, revenue) {
+    return financialExpenses / revenue
+}
+
+// Total Expenses Ratio
+void TotalExpensesRatio(totalExpenses, revenue) {
+    return totalExpenses / revenue
+}
+
+// Financial Independence Ratio
+void FinancialIndependenceRatio(cashFlowFromOperations, cashFlowToDebt) {
+    return cashFlowFromOperations / cashFlowToDebt
+}
+
+// Market Price of Risk (MPR)
+void MPR(expectedReturn, riskFreeRate, beta) {
+    return (expectedReturn - riskFreeRate) / beta
+}
+
+// Price Yield Ratio
+void PriceYieldRatio(price, yield) {
+    return price / yield
+}
+
+// Capital Output Ratio (COR)
+void COR(capitalOutput, output) {
+    return capitalOutput / output
+}
+
+// Debt Yield Ratio (DYR)
+void DYR(totalDebt, propertyValue) {
+    return totalDebt / propertyValue
+}
+
+// Forward Rate
+void ForwardRate(rate, time) {
+    return rate * time
+}
+
+// Residual Income
+void ResidualIncome(netIncome, equityCharge) {
+    return netIncome - equityCharge
+}
+
+// Simple Moving Average (SMA)
+void SMA(closePrices, periods) {
+    let sum = 0
+    for i = 0; i < periods; i++ {
+        sum += closePrices[i]
+    }
+    return sum / periods
+}
+
+// Exponential Moving Average (EMA)
+void EMA(closePrices, periods, smoothingFactor) {
+    let ema = closePrices[0]
+    for i = 1; i < periods; i++ {
+        ema = (closePrices[i] - ema) * smoothingFactor + ema
+    }
+    return ema
+}
+
+// Debt Capacity Ratio
+void DebtCapacityRatio(earningsBeforeTax, interestExpense) {
+    return earningsBeforeTax / interestExpense
+}
+
+// Interest Rate Risk
+void InterestRateRisk(currentRate, newRate) {
+    return currentRate - newRate
+}
+
+// Default Spread
+void DefaultSpread(bondYield, riskFreeRate) {
+    return bondYield - riskFreeRate
+}
+
+// Price of Risk
+void PriceOfRisk(price, risk) {
+    return price / risk
+}
+
+// Cost of Credit
+void CostOfCredit(totalInterest, totalLoan) {
+    return totalInterest / totalLoan
+}
+
+// Debt/EBITDA Coverage Ratio
+void DebtToEBITDACoverageRatio(totalDebt, ebitda) {
+    return totalDebt / ebitda
+}
+
+// Earnings Per Unit (EPU)
+void EarningsPerUnit(netIncome, unitsProduced) {
+    return netIncome / unitsProduced
+}
+
+// Real Return
+void RealReturn(nominalReturn, inflationRate) {
+    return (1 + nominalReturn) / (1 + inflationRate) - 1
+}
+
+// Economic Growth Rate
+void EconomicGrowthRate(currentGDP, previousGDP) {
+    return (currentGDP - previousGDP) / previousGDP
+}
+
+// Equity Multiplier Ratio
+void EquityMultiplierRatio(totalAssets, totalEquity) {
+    return totalAssets / totalEquity
+}
+
+// Debt Multiplier Ratio
+void DebtMultiplierRatio(totalDebt, totalEquity) {
+    return totalDebt / totalEquity
+}
+
+// Financial Capital Ratio
+void FinancialCapitalRatio(netIncome, capitalEmployed) {
+    return netIncome / capitalEmployed
+}
+
+// Investment Ratio
+void InvestmentRatio(grossInvestment, netInvestment) {
+    return grossInvestment / netInvestment
+}
+
+// Earnings Growth
+void EarningsGrowth(currentEarnings, previousEarnings) {
+    return (currentEarnings - previousEarnings) / previousEarnings
+}
+
+// Break-Even Point (BEP)
+void BreakEvenPoint(totalFixedCost, unitSellingPrice, unitVariableCost) {
+    return totalFixedCost / (unitSellingPrice - unitVariableCost)
+}
+
+// Investment Value
+void InvestmentValue(initialInvestment, futureValue) {
+    return futureValue - initialInvestment
+}
+
+// Maximum Drawdown
+void MaximumDrawdown(high, low) {
+    return (high - low) / high
+}
+
+// Implied Volatility
+void ImpliedVolatility(callPrice, putPrice) {
+    return (callPrice + putPrice) / 2
+}
+
+// Equity Valuation Ratio
+void EquityValuationRatio(equityValue, earnings) {
+    return equityValue / earnings
+}
+
+// Interest Rate Parity (IRP)
+void InterestRateParity(forwardRate, spotRate, interestRate) {
+    return (1 + spotRate) / (1 + forwardRate) - 1
+}
+
+// Solvency Ratio
+void SolvencyRatio(netIncome, totalLiabilities) {
+    return netIncome / totalLiabilities
+}
+
+// Capital to Risk-Weighted Assets Ratio (CRAR)
+void CRAR(coreCapital, riskWeightedAssets) {
+    return coreCapital / riskWeightedAssets
+}
+
+// Interest Rate Sensitivity
+void InterestRateSensitivity(priceChange, interestRateChange) {
+    return priceChange / interestRateChange
+}
+
+// Quick Ratio
+void QuickRatio(currentAssets, inventory, currentLiabilities) {
+    return (currentAssets - inventory) / currentLiabilities
+}
+
+// Cash Ratio
+void CashRatio(cashEquivalents, currentLiabilities) {
+    return cashEquivalents / currentLiabilities
+}
+
+// Stock Turnover Ratio
+void StockTurnoverRatio(costOfGoodsSold, averageStock) {
+    return costOfGoodsSold / averageStock
+}
+
+// Return on Risk-Adjusted Capital (RORAC)
+void RORAC(netIncome, riskAdjustedCapital) {
+    return netIncome / riskAdjustedCapital
+}
+
+// Risk-Free Rate
+void RiskFreeRate(realRate, inflationRate) {
+    return (1 + realRate) * (1 + inflationRate) - 1
+}
+
+// Volatility Smile
+void VolatilitySmile(callPrice, putPrice, strikePrice) {
+    return (callPrice - putPrice) / strikePrice
+}
+
+// Economic Value of Equity (EVE)
+void EVE(presentValueOfAssets, presentValueOfLiabilities) {
+    return presentValueOfAssets - presentValueOfLiabilities
+}
+
+// DuPont Analysis
+void DuPontAnalysis(netProfitMargin, totalAssetTurnover, equityMultiplier) {
+    return netProfitMargin * totalAssetTurnover * equityMultiplier
+}
+
+// Modified Internal Rate of Return (MIRR)
+void MIRR(initialInvestment, cashFlows, reinvestmentRate, financingRate) {
+    let positiveCashFlows = 0
+    let negativeCashFlows = 0
+
+    for cashFlow in cashFlows {
+        if cashFlow > 0 {
+            positiveCashFlows += cashFlow * pow(1 + reinvestmentRate, cashFlows.indexOf(cashFlow))
+        } else {
+            negativeCashFlows += cashFlow * pow(1 + financingRate, cashFlows.indexOf(cashFlow))
+        }
+    }
+
+    let pvPositive = initialInvestment + positiveCashFlows
+    let pvNegative = negativeCashFlows
+
+    return pow(pvPositive / abs(pvNegative), 1 / cashFlows.count) - 1
+}
+
+// Debt Collection Period
+void DebtCollectionPeriod(totalDebtors, annualCreditSales) {
+    return totalDebtors / annualCreditSales
+}
+
+// Total Shareholder Return (TSR)
+void TSR(dividends, stockPriceChange) {
+    return (dividends + stockPriceChange) / stockPriceChange
+}
+
+// Economic Profit
+void EconomicProfit(netOperatingProfitAfterTax, capitalCharge) {
+    return netOperatingProfitAfterTax - capitalCharge
+}
+
+// Equity Beta
+void EquityBeta(stockReturn, marketReturn) {
+    return stockReturn / marketReturn
+}
+
+// Long-Term Growth Rate
+void LongTermGrowthRate(dividends, earnings, retentionRatio) {
+    return (dividends + earnings) * retentionRatio
+}
+
+// Asset Intensity
+void AssetIntensity(totalAssets, sales) {
+    return sales / totalAssets
+}
+
+// Goodwill to Assets Ratio
+void GoodwillToAssets(goodwill, totalAssets) {
+    return goodwill / totalAssets
+}
+
+// Financial Return Ratio
+void FinancialReturnRatio(netIncome, financialCapital) {
+    return netIncome / financialCapital
+}
+
+// Long-Term Debt Coverage Ratio
+void LongTermDebtCoverageRatio(cashFlowFromOperations, longTermDebtPayments) {
+    return cashFlowFromOperations / longTermDebtPayments
+}
+
+// Production Cost Per Unit
+void ProductionCostPerUnit(totalProductionCost, unitsProduced) {
+    return totalProductionCost / unitsProduced
+}
+
+// Economic Margin
+void EconomicMargin(netOperatingProfitAfterTax, totalInvestedCapital) {
+    return netOperatingProfitAfterTax / totalInvestedCapital
+}
+
+// Earnings Yield
+void EarningsYield(earningsPerShare, marketPricePerShare) {
+    return earningsPerShare / marketPricePerShare
+}
+
+// Cash ROIC
+void CashROIC(cashFlowFromOperations, investedCapital) {
+    return cashFlowFromOperations / investedCapital
+}
+
+// Capital Gearing Ratio
+void CapitalGearingRatio(equityShareholdersFunds, fixedInterestBorrowings) {
+    return equityShareholdersFunds / fixedInterestBorrowings
+}
+
+// Inventory Turnover Period
+void InventoryTurnoverPeriod(inventory, costOfGoodsSold) {
+    return inventory / costOfGoodsSold
+}
+
+// Cost of Capital
+void CostOfCapital(weightedAverageCostOfCapital, afterTaxCostOfDebt, costOfEquity) {
+    return (afterTaxCostOfDebt + costOfEquity) / weightedAverageCostOfCapital
+}
+
+// Net Interest Margin (NIM)
+void NetInterestMargin(netInterestIncome, averageInterestEarningAssets) {
+    return netInterestIncome / averageInterestEarningAssets
+}
+
+// Income Elasticity of Demand
+void IncomeElasticityOfDemand(percentageChangeInDemand, percentageChangeInIncome) {
+    return percentageChangeInDemand / percentageChangeInIncome
+}
+
+// Default Rate
+void DefaultRate(numberOfDefaults, numberofCreditors) {
+    return numberOfDefaults / numberofCreditors
+}
+
+// Cash on Cash Return (CoC)
+void CoC(beforeTaxCashFlow, equityInvested) {
+    return beforeTaxCashFlow / equityInvested
+}
+
+// Operating Leverage
+void OperatingLeverage(contributionMargin, operatingIncome) {
+    return contributionMargin / operatingIncome
+}
+
+// Debt-to-Income Ratio (DTI)
+void DTI(totalMonthlyDebtPayments, grossMonthlyIncome) {
+    return totalMonthlyDebtPayments / grossMonthlyIncome
+}
+
+// Capital Utilization Ratio
+void CapitalUtilizationRatio(operatingIncome, totalCapitalEmployed) {
+    return operatingIncome / totalCapitalEmployed
+}
+
+// Tax Shield
+void TaxShield(taxRate, interestExpense) {
+    return taxRate * interestExpense
+}
+
+// Relative Strength Index (RSI)
+void RSI(avgUpwardPriceChange, avgDownwardPriceChange) {
+    return 100 - (100 / (1 + (avgUpwardPriceChange / avgDownwardPriceChange)))
+}
+
+// Return on Real Estate Investment (RORI)
+void RORI(profitFromSale, initialInvestment) {
+    return profitFromSale / initialInvestment
+}
+
+// Working Interest
+void WorkingInterest(netRevenueInterest, operatingCosts) {
+    return netRevenueInterest / operatingCosts
+}
+
+// Operating Ratio
+void OperatingRatio(totalOperatingExpenses, operatingRevenues) {
+    return totalOperatingExpenses / operatingRevenues
+}
+
+// Recurring Revenue Ratio
+void RecurringRevenueRatio(recurringRevenue, totalRevenue) {
+    return recurringRevenue / totalRevenue
+}
+
+// Terminal Value
+void TerminalValue(cashFlow, discountRate, growthRate) {
+    return cashFlow * (1 + growthRate) / (discountRate - growthRate)
+}
+
+// Time-Weighted Return (TWR)
+void TWR(initialValue, endingValue, withdrawals, deposits) {
+    return (endingValue - initialValue - withdrawals + deposits) / (initialValue + withdrawals)
+}
+
+// Productivity Ratio
+void ProductivityRatio(output, input) {
+    return output / input
+}
+
+// Stock Price Reversal
+void StockPriceReversal(currentPrice, previousPrice) {
+    return (currentPrice - previousPrice) / previousPrice
+}
+
+// Customer Acquisition Cost (CAC)
+void CAC(salesAndMarketingCosts, numberNewCustomers) {
+    return salesAndMarketingCosts / numberNewCustomers
+}
+
+// Price/Book Value Ratio (P/B Ratio)
+void PBRatio(marketPricePerShare, bookValuePerShare) {
+    return marketPricePerShare / bookValuePerShare
+}
+
+// Strategic Financial Management (SFM)
+void SFM(economicValueAdded, costOfCapital) {
+    return economicValueAdded / costOfCapital
+}
+
+// Current Interest Rate
+void CurrentInterestRate(principal, interest) {
+    return interest / principal
+}
+
+// Profit Margin
+void ProfitMargin(profit, revenue) {
+    return profit / revenue
+}
+
+// Price/Earnings to Growth Ratio (PEG Ratio)
+void PEGRatio(PEG, priceEarningsRatio, growthRate) {
+    return PEG / (priceEarningsRatio / growthRate)
+}
+
+// Leveraged Buyout (LBO)
+void LBO(acquisitionCost, equityCapital, debtFinancing) {
+    return equityCapital / (equityCapital + debtFinancing)
+}
+
+// Price Momentum
+void PriceMomentum(currentPrice, previousPrice) {
+    return (currentPrice - previousPrice) / previousPrice
+}
+
+// Profitability Index (PI)
+void PI(presentValue, initialInvestment) {
+    return presentValue / initialInvestment
+}
+
+// Economic Value to Firm (EVF)
+void EVF(economicProfit, capitalCost) {
+    return economicProfit / capitalCost
+}
+
+// Net Working Capital (NWC)
+void NWC(currentAssets, currentLiabilities) {
+    return currentAssets - currentLiabilities
+}
+
+// Market Risk Premium
+void MarketRiskPremium(expectedMarketReturn, riskFreeRate) {
+    return expectedMarketReturn - riskFreeRate
+}
+
+// Return on Sales (ROS)
+void ROS(netIncome, revenue) {
+    return netIncome / revenue
+}
+
+// Return on Average Operating Assets (ROAOA)
+void ROAOA(netOperatingIncome, averageOperatingAssets) {
+    return netOperatingIncome / averageOperatingAssets
+}
+
+// Financial Leverage
+void FinancialLeverage(totalAssets, totalEquity) {
+    return totalAssets / totalEquity
+}
+
+// Return on Average Risk-Weighted Assets (ROARWA)
+void ROARWA(netIncome, averageRiskWeightedAssets) {
+    return netIncome / averageRiskWeightedAssets
+}
+
+// Inflation Rate
+void InflationRate(currentCPI, previousCPI) {
+    return (currentCPI - previousCPI) / previousCPI
+}
+
+// Total Return
+void TotalReturn(dividends, capitalGains) {
+    return dividends + capitalGains
+}
+
+// Debt Yield
+void DebtYield(totalDebt, propertyValue) {
+    return totalDebt / propertyValue
+}
+
+// Stock Yield
+void StockYield(dividends, stockPrice) {
+    return dividends / stockPrice
+}
+
+// Profitability Indicator
+void ProfitabilityIndicator(profit, investment) {
+    return profit / investment
+}
+
+// Yield on Cost (YOC)
+void YOC(dividendsPerShare, costPerShare) {
+    return dividendsPerShare / costPerShare
+}
+
+// Return on Retained Earnings (RORE)
+void RORE(retainedEarnings, equity) {
+    return retainedEarnings / equity
+}
+
+// Interest Expense to Operating Income
+void InterestExpenseToOperatingIncome(interestExpense, operatingIncome) {
+    return interestExpense / operatingIncome
+}
+
+// Return on Total Capital (ROTC)
+void ROTC(netIncome, totalCapital) {
+    return netIncome / totalCapital
+}
+
+// Cash Flow Return on Investment (CFROI)
+void CFROI(cashFlow, initialInvestment) {
+    return cashFlow / initialInvestment
+}
+
+// Earnings Quality Ratio
+void EarningsQualityRatio(netIncome, cashFlowFromOperations) {
+    return netIncome / cashFlowFromOperations
+}
+
+// Times Interest Earned (TIE) Ratio
+void TIERatio(EBIT, interestExpense) {
+    return EBIT / interestExpense
+}
+
+// Liquidity Coverage Ratio (LCR)
+void LCR(highlyLiquidAssets, netCashOutflows) {
+    return highlyLiquidAssets / netCashOutflows
+}
+
+// Times Interest Earned Ratio (TIE)
+void TIERatio(EBIT, interestExpense) {
+    return EBIT / interestExpense
+}
+
+// Defensive Interval Ratio
+void DIRatio(liquidAssets, dailyCashExpenses) {
+    return liquidAssets / dailyCashExpenses
+}
+
+// Growth to Value Ratio
+void GrowthToValueRatio(growthStockPrice, valueStockPrice) {
+    return growthStockPrice / valueStockPrice
+}
+
+// Average Collection Period (ACP)
+void ACP(accountsReceivable, dailyCreditSales) {
+    return accountsReceivable / dailyCreditSales
+}
+
+// Realized Compound Yield (RCY)
+void RCY(interestEarned, principalInvested, holdingPeriod) {
+    return pow((1 + (interestEarned / principalInvested)), (1 / holdingPeriod)) - 1
+}
+
+// Dupont Identity
+void DupontIdentity(profitMargin, assetTurnover, equityMultiplier) {
+    return profitMargin * assetTurnover * equityMultiplier
+}
+
+// Earnings Before Interest, Taxes, Depreciation, and Amortization (EBITDA) to Debt Service
+void EBITDADebtServiceRatio(EBITDA, debtService) {
+    return EBITDA / debtService
+}
+
+// Equity to Asset Ratio
+void EquityToAssetRatio(totalEquity, totalAssets) {
+    return totalEquity / totalAssets
+}
+
+// Inventory Days Ratio
+void InventoryDaysRatio(inventory, costOfGoodsSold) {
+    return inventory / costOfGoodsSold
+}
+
+// Accounts Payable Turnover Ratio
+void AccountsPayableTurnoverRatio(purchases, averageAccountsPayable) {
+    return purchases / averageAccountsPayable
+}
+
+// Common Equity Tier 1 Ratio (CET1)
+void CET1Ratio(commonEquityTier1Capital, riskWeightedAssets) {
+    return commonEquityTier1Capital / riskWeightedAssets
+}
+
+// Price/Operating Cash Flow Ratio
+void PriceOperatingCashFlowRatio(pricePerShare, operatingCashFlowPerShare) {
+    return pricePerShare / operatingCashFlowPerShare
+}
+
+// Risk-Adjusted Return (RAR)
+void RARRatio(riskAdjustedReturn, riskFreeRate) {
+    return riskAdjustedReturn - riskFreeRate
+}
+
+// Total Equity Ratio
+void TotalEquityRatio(totalEquity, totalAssets) {
+    return totalEquity / totalAssets
+}
+
+// Stock Price Return
+void StockPriceReturn(currentStockPrice, originalStockPrice) {
+    return currentStockPrice / originalStockPrice
+}
+
+// Revenue Per Employee (RPE)
+void RPERatio(totalRevenue, numberEmployees) {
+    return totalRevenue / numberEmployees
+}
+
+// Profitability Indicator Ratio (PIR)
+void PIRRatio(profit, investment) {
+    return profit / investment
+}
+
+// Duration of Equity (DOE)
+void DOERatio(totalShareholdersEquity, netIncome) {
+    return totalShareholdersEquity / netIncome
+}
+
+// Implied Capital Growth Rate
+void ImpliedCapitalGrowthRate(initialStockPrice, terminalStockPrice, holdingPeriod) {
+    return (terminalStockPrice / initialStockPrice) ^ (1 / holdingPeriod) - 1
+}
+
+// Short Interest Ratio
+void ShortInterestRatio(shortInterest, averageDailyTradingVolume) {
+    return shortInterest / averageDailyTradingVolume
+}
+
+// Cash Conversion Cycle (CCC)
+void CCCTurnoverRatio(receivablesTurnover, inventoryTurnover, payablesTurnover) {
+    return receivablesTurnover + inventoryTurnover - payablesTurnover
+}
+
+// Cost of Retained Earnings
+void CostOfRetainedEarnings(dividendsPerShare, stockPrice) {
+    return dividendsPerShare / stockPrice
+}
+
+// Price/Revenue Ratio (P/R Ratio)
+void PRRatio(pricePerShare, revenuePerShare) {
+    return pricePerShare / revenuePerShare
+}
+
+// Bond Yield Plus Risk Premium
+void BondYieldPlusRiskPremium(bondYield, riskPremium) {
+    return bondYield + riskPremium
+}
+
+// Cash Flow Margin Ratio
+void CashFlowMarginRatio(operatingCashFlow, revenue) {
+    return operatingCashFlow / revenue
+}
+
+// Price/Cash Flow Ratio
+void PriceCashFlowRatio(pricePerShare, cashFlowPerShare) {
+    return pricePerShare / cashFlowPerShare
+}
+
+// Earnings Momentum Ratio
+void EarningsMomentumRatio(earnings, earningsLastPeriod) {
+    return earnings / earningsLastPeriod
+}
+
+// Non-Operating Income Ratio
+void NonOperatingIncomeRatio(nonOperatingIncome, revenue) {
+    return nonOperatingIncome / revenue
+}
+
+// Total Equity to Total Assets Ratio
+void TotalEquityToTotalAssetsRatio(totalEquity, totalAssets) {
+    return totalEquity / totalAssets
+}
+
+// Earnings Yield Ratio
+void EarningsYieldRatio(earningsPerShare, stockPrice) {
+    return earningsPerShare / stockPrice
+}
+
+// Dividend Yield Ratio
+void DividendYieldRatio(dividendsPerShare, stockPrice) {
+    return dividendsPerShare / stockPrice
+}
+
+// Price/Sales Ratio
+void PriceSalesRatio(pricePerShare, salesPerShare) {
+    return pricePerShare / salesPerShare
+}
+
+
+// Interest Coverage Ratio (ICR)
+void ICRRatio(EBIT, interestExpense) {
+    return EBIT / interestExpense
+}
+
+// Book Value per Share
+void BookValuePerShare(totalEquity, outstandingShares) {
+    return totalEquity / outstandingShares
+}
+
+// Cost of Preferred Stock
+void CostOfPreferredStock(preferredDividends, marketPrice) {
+    return preferredDividends / marketPrice
+}
+
+// Market Capitalization
+void MarketCapitalization(stockPrice, outstandingShares) {
+    return stockPrice * outstandingShares
+}
+
+// Portfolio Turnover Ratio
+void PortfolioTurnoverRatio(totalAssets, sales) {
+    return totalAssets / sales
+}
+
+// Times Interest Earned (TIE)
+void TIERatio(EBIT, interestExpense) {
+    return EBIT / interestExpense
+}
+
+// Forward Earnings Yield
+void ForwardEarningsYield(estimatedEarnings, stockPrice) {
+    return estimatedEarnings / stockPrice
+}
+
+// Growth Rate of Investments
+void GrowthRateOfInvestments(finalValue, initialValue, numberOfPeriods) {
+    return (finalValue / initialValue) ^ (1 / numberOfPeriods) - 1
+}
+
+// Long-Term Growth Rate (LTGR)
+void LTGRRatio(dividends, earnings, retentionRatio) {
+    return (dividends + earnings) * retentionRatio
+}
+
+// Operating Earnings Yield
+void OperatingEarningsYield(operatingIncome, marketCapitalization) {
+    return operatingIncome / marketCapitalization
+}
+
+// Operating Cash Flow Yield
+void OperatingCashFlowYield(operatingCashFlow, marketCapitalization) {
+    return operatingCashFlow / marketCapitalization
+}
+
+// Payback Period
+void PaybackPeriod(initialInvestment, annualCashFlow) {
+    let cumulativeCashFlow = 0
+    let paybackPeriod = 0
+
+    for cashFlow in annualCashFlow {
+        cumulativeCashFlow += cashFlow
+        paybackPeriod++
+        if cumulativeCashFlow >= initialInvestment {
+            break
+        }
+    }
+
+    return paybackPeriod
+}
+
+// Holding Period Return (HPR)
+void HPR(finalValue, initialValue, income) {
+    return (finalValue - initialValue + income) / initialValue
+}
+
+// Capital Turnover Ratio
+void CapitalTurnoverRatio(revenue, totalCapital) {
+    return revenue / totalCapital
+}
+
+// Cash Flow Return on Equity (CFROE)
+void CFROERatio(cashFlowFromOperations, shareholdersEquity) {
+    return cashFlowFromOperations / shareholdersEquity
+}
+
+// Economic Order Quantity (EOQ)
+void EOQ(demandRate, orderingCost, holdingCost) {
+    return sqrt((2 * demandRate * orderingCost) / holdingCost)
+}
+
+// Return on Capital Employed (ROCE)
+void ROCERatio(EBIT, capitalEmployed) {
+    return EBIT / capitalEmployed
+}
+
+// Debt-to-Equity Ratio (D/E Ratio)
+void DERatio(totalLiabilities, shareholdersEquity) {
+    return totalLiabilities / shareholdersEquity
+}
+
+// Cash Flow to Total Debt Ratio
+void CFTDRatio(operatingCashFlow, totalDebt) {
+    return operatingCashFlow / totalDebt
+}
+
+// Earnings Power Value (EPV)
+void EPVRatio(adjustedEBIT, costOfCapital) {
+    return adjustedEBIT / costOfCapital
+}
+
+// Dividend Coverage Ratio
+void DividendCoverageRatio(netIncome, dividends) {
+    return netIncome / dividends
+}
+
+// Internal Growth Rate (IGR)
+void IGRRatio(retentionRatio, returnOnAssets) {
+    return retentionRatio * returnOnAssets
+}
+
+// Cash Flow Coverage Ratio (CFCR)
+void CFCRRatio(operatingCashFlow, financialCharges) {
+    return operatingCashFlow / financialCharges
+}
+
+// Sustainable Growth Rate (SGR)
+void SGRRatio(retentionRatio, returnOnEquity) {
+    return retentionRatio * returnOnEquity
+}
+
+// Cost of Equity
+void CostOfEquity(dividends, growthRate, stockPrice) {
+    return (dividends / stockPrice) + growthRate
+}
+
+// Efficiency Ratio
+void EfficiencyRatio(revenue, operatingExpenses) {
+    return operatingExpenses / revenue
+}
+
+// Return on Average Assets (ROAA)
+void ROAARatio(netIncome, averageTotalAssets) {
+    return netIncome / averageTotalAssets
+}
+
+// Return on Average Equity (ROAE)
+void ROAERatio(netIncome, averageTotalEquity) {
+    return netIncome / averageTotalEquity
+}
+
+// Return on Common Equity (ROCE)
+void ROCERatio(netIncome, commonEquity) {
+    return netIncome / commonEquity
+}
+
+// Basic Earnings Power Ratio (BEPR)
+void BEPRatio(EBIT, totalAssets) {
+    return EBIT / totalAssets
+}
+
+// Degree of Operating Leverage (DOL)
+void DOLRatio(contributionMargin, operatingIncome) {
+    return contributionMargin / operatingIncome
+}
+
+// Dividend Payout Ratio
+void DividendPayoutRatio(dividends, earnings) {
+    return dividends / earnings
+}
+
+// Cash Dividend Payout Ratio
+void CashDividendPayoutRatio(cashDividends, earnings) {
+    return cashDividends / earnings
+}
+
+// Long-Term Debt to Capitalization Ratio
+void LongTermDebtToCapitalizationRatio(longTermDebt, capitalization) {
+    return longTermDebt / capitalization
+}
+
+// Total Debt to Capitalization Ratio
+void TotalDebtToCapitalizationRatio(totalDebt, capitalization) {
+    return totalDebt / capitalization
+}
+
+// Payables Turnover Ratio
+void PayablesTurnoverRatio(costOfGoodsSold, averageAccountsPayable) {
+    return costOfGoodsSold / averageAccountsPayable
+}
+
+// Return on Marketing Investment (ROMI)
+void ROMIRatio(profit, marketingInvestment) {
+    return profit / marketingInvestment
+}
+
+// Price/Earnings Ratio (P/E Ratio)
+void PERatio(marketPricePerShare, earningsPerShare) {
+    return marketPricePerShare / earningsPerShare
+}
+
+// Return on Capital (ROC)
+void ROCRatio(netOperatingProfit, capitalInvested) {
+    return netOperatingProfit / capitalInvested
+}
+
+// Terminal Value to Enterprise Value Ratio
+void TVERatio(terminalValue, enterpriseValue) {
+    return terminalValue / enterpriseValue
+}
+
+// Net Profit Ratio
+void NetProfitRatio(netProfit, revenue) {
+    return netProfit / revenue
+}
+
+// Sustainable Growth Rate (SGR)
+void SGRRatio(retentionRatio, returnOnEquity) {
+    return retentionRatio * returnOnEquity
+}
+
+// Earnings Retention Ratio
+void EarningsRetentionRatio(dividends, earnings) {
+    return (earnings - dividends) / earnings
+}
+
+// Return on Capital Employed (ROCE)
+void ROCERatio(EBIT, capitalEmployed) {
+    return EBIT / capitalEmployed
+}
+
+// Asset Utilization
+void AssetUtilization(revenue, averageTotalAssets) {
+    return revenue / averageTotalAssets
+}
+
+// Cost of Debt
+void CostOfDebt(interestExpense, debt) {
+    return interestExpense / debt
+}
+
+// Dividend Growth Rate
+void DividendGrowthRate(dividendsCurrentYear, dividendsPreviousYear) {
+    return (dividendsCurrentYear - dividendsPreviousYear) / dividendsPreviousYear
+}
+
+// Debt to EBITDA Ratio
+void DebtToEBITDARatio(totalDebt, EBITDA) {
+    return totalDebt / EBITDA
+}
+
+// Weighted Average Cost of Capital (WACC)
+void WACCRatio(costOfEquity, costOfDebt, marketValueEquity, marketValueDebt, marketValueTotal) {
+    return (costOfEquity * marketValueEquity / marketValueTotal) + (costOfDebt * (1 - taxRate) * marketValueDebt / marketValueTotal)
+}
+
+// Return on Net Assets (RONA)
+void RONARatio(netOperatingProfit, netAssets) {
+    return netOperatingProfit / netAssets
+}
+
+// Return on Average Common Equity (ROACE)
+void ROACERatio(netIncome, averageCommonEquity) {
+    return netIncome / averageCommonEquity
+}
+
+// Quick Asset Ratio
+void QuickAssetRatio(cashEquivalents, marketableSecurities, accountsReceivable) {
+    return (cashEquivalents + marketableSecurities + accountsReceivable) / currentLiabilities
+}
+
+// Price to Free Cash Flow Ratio
+void PFCFRatio(marketPricePerShare, freeCashFlowPerShare) {
+    return marketPricePerShare / freeCashFlowPerShare
+}
+
+// Price to Operating Cash Flow Ratio
+void POCFRatio(marketPricePerShare, operatingCashFlowPerShare) {
+    return marketPricePerShare / operatingCashFlowPerShare
+}
+
+// Fixed Asset Turnover Ratio
+void FixedAssetTurnoverRatio(revenue, netFixedAssets) {
+    return revenue / netFixedAssets
+}
+
+
+// Return on Research Capital (RORC)
+void RORCRatio(netIncome, researchCapital) {
+    return netIncome / researchCapital
+}
+
+// Return on Total Capital (ROTC)
+void ROTCRatio(netIncome, totalCapital) {
+    return netIncome / totalCapital
+}
+
+// Common Stock Equity Ratio
+void CommonStockEquityRatio(commonStockEquity, totalLiabilities) {
+    return commonStockEquity / totalLiabilities
+}
+
+// Enterprise Value (EV) to EBITDA Ratio
+void EVEBITDARatio(enterpriseValue, EBITDA) {
+    return enterpriseValue / EBITDA
+}
+
+// Price to Book Value Ratio (P/B Ratio)
+void PBRatio(marketPricePerShare, bookValuePerShare) {
+    return marketPricePerShare / bookValuePerShare
+}
+
+// Payout Ratio
+void PayoutRatio(dividends, earnings) {
+    return dividends / earnings
+}
+
+// Market to Book Ratio
+void MarketToBookRatio(marketPricePerShare, bookValuePerShare) {
+    return marketPricePerShare / bookValuePerShare
+}
+
+// Operating Income to Sales Ratio
+void OISRatio(operatingIncome, revenue) {
+    return operatingIncome / revenue
+}
+
+// Total Debts to Total Assets Ratio
+void TotalDebtsToTotalAssetsRatio(totalDebts, totalAssets) {
+    return totalDebts / totalAssets
+}
+
+// Long-Term Debt to Equity Ratio
+void LongTermDebtToEquityRatio(longTermDebt, shareholdersEquity) {
+    return longTermDebt / shareholdersEquity
+}
+
+// Earnings to Price Ratio (E/P Ratio)
+void EPRatio(earnings, marketPrice) {
+    return earnings / marketPrice
+}
+
+// Price to Operating Income Ratio (P/OI Ratio)
+void POIRatio(marketPrice, operatingIncome) {
+    return marketPrice / operatingIncome
+}
+
+
+
+// Internal Rate of Return (IRR)
+void IRRRatio(initialInvestment, cashFlows) {
+    let NPV = 0
+    for i in cashFlows.indices {
+        NPV += cashFlows[i] / pow((1 + IRR), i)
+    }
+    return NPV
+}
+
+// Total Debt to Total Equity Ratio
+void TotalDebtToTotalEquityRatio(totalDebt, totalEquity) {
+    return totalDebt / totalEquity
+}
+
+// Weighted Average Maturity (WAM)
+void WAMRatio(totalPayments, totalPaymentsToBeMade) {
+    return totalPayments / totalPaymentsToBeMade
+}
+
+// Debt to Capital Ratio
+void DebtToCapitalRatio(totalDebt, totalCapital) {
+    return totalDebt / totalCapital
+}
+
+// Free Cash Flow to Equity Ratio (FCFE)
+void FCFERatio(cashFlowFromOperations, capitalExpenditures, netBorrowing) {
+    return (cashFlowFromOperations - capitalExpenditures + netBorrowing) / equity
+}
+
+// Price to Cash Flow Ratio
+void PCFRatio(pricePerShare, cashFlowPerShare) {
+    return pricePerShare / cashFlowPerShare
+}
+
+// Operating Cash Flow Ratio (OCFR)
+void OCRatio(operatingCashFlow, sales) {
+    return operatingCashFlow / sales
+}
+
+// Total Debt to EBITDA Ratio
+void TotalDebtToEBITDARatio(totalDebt, EBITDA) {
+    return totalDebt / EBITDA
+}
+
+// Return on Operating Capital (ROOC)
+void ROOCRatio(operatingIncome, operatingCapital) {
+    return operatingIncome / operatingCapital
+}
+
+// Book Value Ratio (BVR)
+void BVRatio(bookValue, marketPrice) {
+    return bookValue / marketPrice
+}
+
+// Book-to-Market Ratio (B/M Ratio)
+void BMRatio(bookValuePerShare, marketPricePerShare) {
+    return bookValuePerShare / marketPricePerShare
+}
+
+// Return on Assets (ROA)
+void ROARatio(netIncome, totalAssets) {
+    return netIncome / totalAssets
+}
+
+// Total Debt to Operating Cash Flow Ratio
+void TotalDebtToOCFRatio(totalDebt, operatingCashFlow) {
+    return totalDebt / operatingCashFlow
+}
+
+// Interest Coverage Ratio (ICR)
+void ICRRatio(EBIT, interestExpense) {
+    return EBIT / interestExpense
+}
+
+// Average Cost of Capital (ACC)
+void ACCRatio(WACC, ROIC) {
+    return WACC / ROIC
+}
+
+// Dividend Payout Ratio (DPR)
+void DPRatio(dividendsPaid, netIncome) {
+    return dividendsPaid / netIncome
+}
+
+// Operating Cash Flow to Sales Ratio (OCFS)
+void OCFSSRatio(operatingCashFlow, sales) {
+    return operatingCashFlow / sales
+}
+
+// Price to Operating Cash Flow Ratio (P/OCF Ratio)
+void POCFRatio(marketPricePerShare, operatingCashFlowPerShare) {
+    return marketPricePerShare / operatingCashFlowPerShare
+}
+
+// Operating Profitability Ratio (OPR)
+void OPRRatio(operatingIncome, totalAssets) {
+    return operatingIncome / totalAssets
+}
+
+
+
+// Price to Free Cash Flow Ratio (P/FCF Ratio)
+void PFCFRatio(marketPricePerShare, freeCashFlowPerShare) {
+    return marketPricePerShare / freeCashFlowPerShare
+}
+
+// Market Capitalization to Sales Ratio (MCS Ratio)
+void MCSRatio(marketCapitalization, sales) {
+    return marketCapitalization / sales
+}
+
+// Net Interest Margin (NIM)
+void NIMRatio(netInterestIncome, averageInterestBearingAssets) {
+    return netInterestIncome / averageInterestBearingAssets
+}
+
+// Operating Margin (OM)
+void OMRatio(operatingIncome, revenue) {
+    return operatingIncome / revenue
+}
+
+
+// Interest Coverage (IC)
+void ICRatio(EBIT, interestExpense) {
+    return EBIT / interestExpense
+}
+
+// Book-to-Market Ratio (B/M Ratio)
+void BMRatio(bookValuePerShare, marketPricePerShare) {
+    return bookValuePerShare / marketPricePerShare
+}
+
+// Price to Sales Ratio (P/S Ratio)
+void PSRatio(marketPricePerShare, salesPerShare) {
+    return marketPricePerShare / salesPerShare
+}
+
+// Sustainable Growth Rate (SGR)
+void SGRRatio(retentionRatio, returnOnEquity) {
+    return retentionRatio * returnOnEquity
+}
+
+// Cash Return on Assets (CROA)
+void CROARatio(cashOperatingIncome, averageTotalAssets) {
+    return cashOperatingIncome / averageTotalAssets
+}
+
+// Market to Book Ratio (MBR)
+void MBRRatio(marketPrice, bookValue) {
+    return marketPrice / bookValue
+}
+
+// Payout Yield
+void PayoutYield(dividendsPaid, marketPrice) {
+    return dividendsPaid / marketPrice
+}
+
+// Total Debt to Equity Ratio (D/E Ratio)
+void DERatio(totalDebt, totalEquity) {
+    return totalDebt / totalEquity
+}
+
+// Book Value Return on Equity (BROE)
+void BROERatio(netIncome, averageShareholdersEquity) {
+    return netIncome / averageShareholdersEquity
+}
+
+// Operating Income to Capital Ratio (OIC Ratio)
+void OICRatio(operatingIncome, capital) {
+    return operatingIncome / capital
+}
+
+// Free Cash Flow to Firm (FCFF)
+void FCFFRatio(FCFF, enterpriseValue) {
+    return FCFF / enterpriseValue
+}
+
+// Capitalization Ratio (CR)
+void CRRatio(totalMarketValue, totalDebt) {
+    return totalMarketValue / totalDebt
+}
+
+// Cash Flow to Debt Ratio (CFD Ratio)
+void CFDRatio(cashFlow, debt) {
+    return cashFlow / debt
+}
+
+// Return on Financing (ROF)
+void ROFRatio(netIncome, totalFinancing) {
+    return netIncome / totalFinancing
+}
+
+// Market Value Added (MVA)
+void MVARatio(marketValue, capital) {
+    return marketValue / capital
+}
+
+// Net Interest Margin (NIM)
+void NIMRatio(netInterestIncome, averageInterestBearingAssets) {
+    return netInterestIncome / averageInterestBearingAssets
+}
+
+// Dividend Yield (DY)
+void DYRatio(dividends, marketPrice) {
+    return dividends / marketPrice
+}
+
+// Profit Margin (PM)
+void PMRatio(netIncome, revenue) {
+    return netIncome / revenue
+}
+
+// Market Value to Net Sales (MVNS)
+void MVNSRatio(marketValue, netSales) {
+    return marketValue / netSales
+}
+
+// Dividend Cover
+void DividendCover(netIncome, dividends) {
+    return netIncome / dividends
+}
+
+// Enterprise Value to Revenue Ratio (EV/R Ratio)
+void EVRRatio(enterpriseValue, revenue) {
+    return enterpriseValue / revenue
+}
+
+// Return on Total Capital (ROTC)
+void ROTCRatio(netIncome, totalCapital) {
+    return netIncome / totalCapital
+}
+
+// Dividend Payout Ratio (DPR)
+void DPRatio(dividends, earnings) {
+    return dividends / earnings
+}
+
+// Price-to-Book Ratio (P/B Ratio)
+void PBRatio(marketPrice, bookValue) {
+    return marketPrice / bookValue
+}
+
+// Price Earnings to Growth Ratio (PEG Ratio)
+void PEGRatio(PE, growthRate) {
+    return PE / growthRate
+}
+
+// Market Value Added to Capital Ratio (MVARC Ratio)
+void MVARCRatio(marketValueAdded, capital) {
+    return marketValueAdded / capital
+}
+
+// Return on Operating Assets (ROOA)
+void ROOARatio(netOperatingIncome, averageOperatingAssets) {
+    return netOperatingIncome / averageOperatingAssets
+}
+
+// Price-to-Sales Ratio (P/S Ratio)
+void PSRatio(marketPrice, sales) {
+    return marketPrice / sales
+}
+
+// Dividend Payout Ratio (DPR)
+void DPRatio(dividends, netIncome) {
+    return dividends / netIncome
+}
+
+// Cash Ratio
+void CashRatio(cash, currentLiabilities) {
+    return cash / currentLiabilities
+}
+
+// Price-to-Operating Earnings Ratio (P/EO Ratio)
+void PEOERatio(marketPrice, operatingEarnings) {
+    return marketPrice / operatingEarnings
+}
+
+// Return on Debt Ratio (RODR)
+void RODRRatio(netIncome, totalDebt) {
+    return netIncome / totalDebt
+}
+
+// Cash Flow to Total Debt Ratio (CFD Ratio)
+void CFDRatio(cashFlow, totalDebt) {
+    return cashFlow / totalDebt
+}
+
+// Capital to Risk-Weighted Assets Ratio (CRAR)
+void CRARRatio(totalCapital, riskWeightedAssets) {
+    return totalCapital / riskWeightedAssets
+}
+
+// Equity to Fixed Asset Ratio (EFA Ratio)
+void EFARatio(totalEquity, fixedAssets) {
+    return totalEquity / fixedAssets
+}
+
+// Retention Ratio (RR)
+void RRRatio(retainedEarnings, netIncome) {
+    return retainedEarnings / netIncome
+}
+
+// Return on Net Worth (RONW)
+void RONWRatio(netIncome, netWorth) {
+    return netIncome / netWorth
+}
+
+// Profit to Revenue Ratio (PRR)
+void PRRatio(profit, revenue) {
+    return profit / revenue
+}
+
+
+
+// Operating Cash Flow to Debt Ratio (OCFDR)
+void OCFDRatio(operatingCashFlow, debt) {
+    return operatingCashFlow / debt
+}
+
+// Total Return on Assets (TROA)
+void TROARatio(totalIncome, totalAssets) {
+    return totalIncome / totalAssets
+}
+
+// Operating Profit to Sales Ratio (OPS Ratio)
+void OPSRatio(operatingProfit, sales) {
+    return operatingProfit / sales
+}
+
+// Market-to-Book Ratio (M/B Ratio)
+void MBRatio(marketValue, bookValue) {
+    return marketValue / bookValue
+}
+
+
+// Operating Income to Capital Ratio (OIC Ratio)
+void OICRatio(operatingIncome, capital) {
+    return operatingIncome / capital
+}
+
+// Gross Profit Margin (GPM)
+void GPMRatio(grossProfit, revenue) {
+    return grossProfit / revenue
+}
+
+// Price-to-Cash Flow Ratio (P/CF Ratio)
+void PCFRatio(marketPrice, cashFlow) {
+    return marketPrice / cashFlow
+}
+
+// Interest Coverage Ratio (ICR)
+void ICRRatio(EBIT, interestExpense) {
+    return EBIT / interestExpense
+}
+
+
+// Long-Term Debt to Equity Ratio (LTDER)
+void LTDERatio(longTermDebt, equity) {
+    return longTermDebt / equity
+}
+
+// Net Interest Margin (NIM)
+void NIMRatio(netInterestIncome, averageInterestBearingAssets) {
+    return netInterestIncome / averageInterestBearingAssets
+}
+
+// Asset Utilization Rate (AUR)
+void AURRatio(revenue, totalAssets) {
+    return revenue / totalAssets
+}
+
+// Current Ratio (CR)
+void CRRatio(currentAssets, currentLiabilities) {
+    return currentAssets / currentLiabilities
+}
+
+// Financial Leverage Ratio (FLR)
+void FLRRatio(totalAssets, totalEquity) {
+    return totalAssets / totalEquity
+}
+
+// Total Return on Equity (TROE)
+void TROERatio(netIncome, averageEquity) {
+    return netIncome / averageEquity
+}
+
+// Return on Total Assets (ROTA)
+void ROTARatio(netIncome, totalAssets) {
+    return netIncome / totalAssets
+}
+
+// Cash Return on Investment (CROI)
+void CROIRatio(cashFlow, investment) {
+    return cashFlow / investment
+}
+
+// Operating Cash Flow to Current Liabilities Ratio (OCFCL Ratio)
+void OCFCLRatio(operatingCashFlow, currentLiabilities) {
+    return operatingCashFlow / currentLiabilities
+}
+
+// Earnings per Share (EPS)
+void EPSRatio(netIncome, sharesOutstanding) {
+    return netIncome / sharesOutstanding
+}
+
+// Price Earnings Growth Ratio (PEG Ratio)
+void PEGRatio(PE, growthRate) {
+    return PE / growthRate
+}
+
+// Debt to Capital Ratio (DCR)
+void DCRRatio(totalDebt, totalCapital) {
+    return totalDebt / totalCapital
+}
+
+// Cash Flow to Total Liabilities Ratio (CFTL Ratio)
+void CFTLRatio(cashFlow, totalLiabilities) {
+    return cashFlow / totalLiabilities
+}
+
+// Interest Coverage Ratio (ICR)
+void ICRRatio(EBIT, interestExpense) {
+    return EBIT / interestExpense
+}
+
+// Return on Common Equity (ROCE)
+void ROCERatio(netIncome, commonEquity) {
+    return netIncome / commonEquity
+}
+
+// Asset Turnover Ratio (ATR)
+void ATRRatio(revenue, averageTotalAssets) {
+    return revenue / averageTotalAssets
+}
+
+
+// Market to Book Ratio (M/B Ratio)
+void MBRatio(marketPrice, bookValue) {
+    return marketPrice / bookValue
+}
+
+// Operating Profit Margin (OPM)
+void OPMRatio(operatingProfit, revenue) {
+    return operatingProfit / revenue
+}
+
+// Price to Free Cash Flow (P/FCF Ratio)
+void PFCFRatio(marketPrice, freeCashFlow) {
+    return marketPrice / freeCashFlow
+}
+
+// Price to Operating Cash Flow (P/OCF Ratio)
+void POCFRatio(marketPrice, operatingCashFlow) {
+    return marketPrice / operatingCashFlow
+}
+
+// Gross Profit Margin (GPM)
+void GPMRatio(grossProfit, revenue) {
+    return grossProfit / revenue
+}
+
+// Earnings Per Share (EPS)
+void EPSRatio(netIncome, sharesOutstanding) {
+    return netIncome / sharesOutstanding
+}
+
+// Debt to Equity Ratio (D/E Ratio)
+void DERatio(totalDebt, shareholdersEquity) {
+    return totalDebt / shareholdersEquity
+}
+
+// Cash Return on Assets (CROA)
+void CROARatio(cashFlow, totalAssets) {
+    return cashFlow / totalAssets
+}
+
+// Return on Assets (ROA)
+void ROARatio(netIncome, totalAssets) {
+    return netIncome / totalAssets
+}
+
+// Operating Cash Flow to Sales Ratio (OCFS Ratio)
+void OCFSRatio(operatingCashFlow, sales) {
+    return operatingCashFlow / sales
+}
+
+// Operating Margin (OM)
+void OMRatio(operatingIncome, revenue) {
+    return operatingIncome / revenue
+}
+
+// Cash Return on Assets (CROA)
+void CROARatio(cashFlow, totalAssets) {
+    return cashFlow / totalAssets
+}
+
+// Earnings Per Share (EPS)
+void EPSRatio(netIncome, sharesOutstanding) {
+    return netIncome / sharesOutstanding
+}
+
+// Debt to Equity Ratio (D/E Ratio)
+void DERatio(totalDebt, shareholdersEquity) {
+    return totalDebt / shareholdersEquity
+}
+
+// Cash Flow Return on Equity (CFROE)
+void CFROERatio(cashFlowFromOperations, shareholdersEquity) {
+    return cashFlowFromOperations / shareholdersEquity
+}
+
+// Economic Order Quantity (EOQ)
+void EOQ(demandRate, orderingCost, holdingCost) {
+    return sqrt((2 * demandRate * orderingCost) / holdingCost)
+}
+
+// Return on Capital Employed (ROCE)
+void ROCERatio(EBIT, capitalEmployed) {
+    return EBIT / capitalEmployed
+}
+
+// Debt-to-Equity Ratio (D/E Ratio)
+void DERatio(totalLiabilities, shareholdersEquity) {
+    return totalLiabilities / shareholdersEquity
+}
+
+// Cash Flow to Total Debt Ratio
+void CFTDRatio(operatingCashFlow, totalDebt) {
+    return operatingCashFlow / totalDebt
+}
+
+// Earnings Power Value (EPV)
+void EPVRatio(adjustedEBIT, costOfCapital) {
+    return adjustedEBIT / costOfCapital
+}
+
+// Dividend Coverage Ratio
+void DividendCoverageRatio(netIncome, dividends) {
+    return netIncome / dividends
+}
+
+// Internal Growth Rate (IGR)
+void IGRRatio(retentionRatio, returnOnAssets) {
+    return retentionRatio * returnOnAssets
+}
+
+// Cash Flow Coverage Ratio (CFCR)
+void CFCRRatio(operatingCashFlow, financialCharges) {
+    return operatingCashFlow / financialCharges
+}
+
+// Sustainable Growth Rate (SGR)
+void SGRRatio(retentionRatio, returnOnEquity) {
+    return retentionRatio * returnOnEquity
+}
+
+// Cost of Equity
+void CostOfEquity(dividends, growthRate, stockPrice) {
+    return (dividends / stockPrice) + growthRate
+}
+
+// Efficiency Ratio
+void EfficiencyRatio(revenue, operatingExpenses) {
+    return operatingExpenses / revenue
+}
+
+// Return on Average Assets (ROAA)
+void ROAARatio(netIncome, averageTotalAssets) {
+    return netIncome / averageTotalAssets
+}
+
+// Return on Average Equity (ROAE)
+void ROAERatio(netIncome, averageTotalEquity) {
+    return netIncome / averageTotalEquity
+}
+
+// Return on Common Equity (ROCE)
+void ROCERatio(netIncome, commonEquity) {
+    return netIncome / commonEquity
+}
+
+// Basic Earnings Power Ratio (BEPR)
+void BEPRatio(EBIT, totalAssets) {
+    return EBIT / totalAssets
+}
+
+// Degree of Operating Leverage (DOL)
+void DOLRatio(contributionMargin, operatingIncome) {
+    return contributionMargin / operatingIncome
+}
+
+// Dividend Payout Ratio
+void DividendPayoutRatio(dividends, earnings) {
+    return dividends / earnings
+}
+
+// Cash Dividend Payout Ratio
+void CashDividendPayoutRatio(cashDividends, netIncome) {
+    return cashDividends / netIncome
+}
+
+// Return on Operating Assets (ROOA)
+void ROOARatio(netOperatingIncome, averageOperatingAssets) {
+    return netOperatingIncome / averageOperatingAssets
+}
+
+// Financial Leverage Index (FLI)
+void FLIRatio(totalAssets, totalEquity) {
+    return totalAssets / totalEquity
+}
+
+// Cash Flow Margin Ratio (CFMR)
+void CFMRRatio(operatingCashFlow, revenue) {
+    return operatingCashFlow / revenue
+}
+
+// Return on Total Assets (ROTA)
+void ROTARatio(netIncome, totalAssets) {
+    return netIncome / totalAssets
+}
+
+// Cash Return on Assets (CROA)
+void CROARatio(cashFlow, totalAssets) {
+    return cashFlow / totalAssets
+}
+
+// Operating Cash Flow to Sales Ratio (OCFS Ratio)
+void OCFSRatio(operatingCashFlow, sales) {
+    return operatingCashFlow / sales
+}
+
+
+// Operating Margin (OM)
+void OMRatio(operatingIncome, revenue) {
+    return operatingIncome / revenue
+}
+
+// Cash Return on Assets (CROA)
+void CROARatio(cashFlow, totalAssets) {
+    return cashFlow / totalAssets
+}
+
+// Earnings Per Share (EPS)
+void EPSRatio(netIncome, sharesOutstanding) {
+    return netIncome / sharesOutstanding
+}
+
+// Debt to Equity Ratio (D/E Ratio)
+void DERatio(totalDebt, shareholdersEquity) {
+    return totalDebt / shareholdersEquity
+}
+
+// Cash Flow Return on Equity (CFROE)
+void CFROERatio(cashFlowFromOperations, shareholdersEquity) {
+    return cashFlowFromOperations / shareholdersEquity
+}
+
+// Economic Order Quantity (EOQ)
+void EOQ(demandRate, orderingCost, holdingCost) {
+    return sqrt((2 * demandRate * orderingCost) / holdingCost)
+}
+
+// Return on Capital Employed (ROCE)
+void ROCERatio(EBIT, capitalEmployed) {
+    return EBIT / capitalEmployed
+}
+
+// Debt-to-Equity Ratio (D/E Ratio)
+void DERatio(totalLiabilities, shareholdersEquity) {
+    return totalLiabilities / shareholdersEquity
+}
+
+// Cash Flow to Total Debt Ratio
+void CFTDRatio(operatingCashFlow, totalDebt) {
+    return operatingCashFlow / totalDebt
+}
+
+// Earnings Power Value (EPV)
+void EPVRatio(adjustedEBIT, costOfCapital) {
+    return adjustedEBIT / costOfCapital
+}
+
+// Dividend Coverage Ratio
+void DividendCoverageRatio(netIncome, dividends) {
+    return netIncome / dividends
+}
+
+// Internal Growth Rate (IGR)
+void IGRRatio(retentionRatio, returnOnAssets) {
+    return retentionRatio * returnOnAssets
+}
+
+// Cash Flow Coverage Ratio (CFCR)
+void CFCRRatio(operatingCashFlow, financialCharges) {
+    return operatingCashFlow / financialCharges
+}
+
+// Sustainable Growth Rate (SGR)
+void SGRRatio(retentionRatio, returnOnEquity) {
+    return retentionRatio * returnOnEquity
+}
+
+// Cost of Equity
+void CostOfEquity(dividends, growthRate, stockPrice) {
+    return (dividends / stockPrice) + growthRate
+}
+
+// Efficiency Ratio
+void EfficiencyRatio(revenue, operatingExpenses) {
+    return operatingExpenses / revenue
+}
+
+// Return on Average Assets (ROAA)
+void ROAARatio(netIncome, averageTotalAssets) {
+    return netIncome / averageTotalAssets
+}
+
+// Return on Average Equity (ROAE)
+void ROAERatio(netIncome, averageTotalEquity) {
+    return netIncome / averageTotalEquity
+}
+
+// Return on Common Equity (ROCE)
+void ROCERatio(netIncome, commonEquity) {
+    return netIncome / commonEquity
+}
+
+// Basic Earnings Power Ratio (BEPR)
+void BEPRatio(EBIT, totalAssets) {
+    return EBIT / totalAssets
+}
+
+// Degree of Operating Leverage (DOL)
+void DOLRatio(contributionMargin, operatingIncome) {
+    return contributionMargin / operatingIncome
+}
+
+// Dividend Payout Ratio
+void DividendPayoutRatio(dividends, earnings) {
+    return dividends / earnings
+}
+
+// Cash Dividend Payout Ratio
+void CashDividendPayoutRatio(cashDividends, netIncome) {
+    return cashDividends / netIncome
+}
+
+// Return on Operating Assets (ROOA)
+void ROOARatio(netOperatingIncome, averageOperatingAssets) {
+    return netOperatingIncome / averageOperatingAssets
+}
+
+// Financial Leverage Index (FLI)
+void FLIRatio(totalAssets, totalEquity) {
+    return totalAssets / totalEquity
+}
+
+// Cash Flow Margin Ratio (CFMR)
+void CFMRRatio(operatingCashFlow, revenue) {
+    return operatingCashFlow / revenue
+}
+
+// Return on Total Assets (ROTA)
+void ROTARatio(netIncome, totalAssets) {
+    return netIncome / totalAssets
+}
+
+// Cash Return on Assets (CROA)
+void CROARatio(cashFlow, totalAssets) {
+    return cashFlow / totalAssets
+}
+
+// Operating Cash Flow to Sales Ratio (OCFS Ratio)
+void OCFSRatio(operatingCashFlow, sales) {
+    return operatingCashFlow / sales
+}
+
+// Operating Margin (OM)
+void OMRatio(operatingIncome, revenue) {
+    return operatingIncome / revenue
+}
+
+// Cash Return on Assets (CROA)
+void CROARatio(cashFlow, totalAssets) {
+    return cashFlow / totalAssets
+}
+
+// Earnings Per Share (EPS)
+void EPSRatio(netIncome, sharesOutstanding) {
+    return netIncome / sharesOutstanding
+}
+
+// Debt to Equity Ratio (D/E Ratio)
+void DERatio(totalDebt, shareholdersEquity) {
+    return totalDebt / shareholdersEquity
+}
+
+// Cash Flow Return on Equity (CFROE)
+void CFROERatio(cashFlowFromOperations, shareholdersEquity) {
+    return cashFlowFromOperations / shareholdersEquity
+}
+
+// Economic Order Quantity (EOQ)
+void EOQ(demandRate, orderingCost, holdingCost) {
+    return sqrt((2 * demandRate * orderingCost) / holdingCost)
+}
+
+// Return on Capital Employed (ROCE)
+void ROCERatio(EBIT, capitalEmployed) {
+    return EBIT / capitalEmployed
+}
+
+// Debt-to-Equity Ratio (D/E Ratio)
+void DERatio(totalLiabilities, shareholdersEquity) {
+    return totalLiabilities / shareholdersEquity
+}
+
+// Cash Flow to Total Debt Ratio
+void CFTDRatio(operatingCashFlow, totalDebt) {
+    return operatingCashFlow / totalDebt
+}
+
+// Earnings Power Value (EPV)
+void EPVRatio(adjustedEBIT, costOfCapital) {
+    return adjustedEBIT / costOfCapital
+}
+
+// Dividend Coverage Ratio
+void DividendCoverageRatio(netIncome, dividends) {
+    return netIncome / dividends
+}
+
+// Internal Growth Rate (IGR)
+void IGRRatio(retentionRatio, returnOnAssets) {
+    return retentionRatio * returnOnAssets
+}
+
+// Cash Flow Coverage Ratio (CFCR)
+void CFCRRatio(operatingCashFlow, financialCharges) {
+    return operatingCashFlow / financialCharges
+}
+
+// Sustainable Growth Rate (SGR)
+void SGRRatio(retentionRatio, returnOnEquity) {
+    return retentionRatio * returnOnEquity
+}
+
+// Cost of Equity
+void CostOfEquity(dividends, growthRate, stockPrice) {
+    return (dividends / stockPrice) + growthRate
+}
+
+// Efficiency Ratio
+void EfficiencyRatio(revenue, operatingExpenses) {
+    return operatingExpenses / revenue
+}
+
+// Return on Average Assets (ROAA)
+void ROAARatio(netIncome, averageTotalAssets) {
+    return netIncome / averageTotalAssets
+}
+
+// Return on Average Equity (ROAE)
+void ROAERatio(netIncome, averageTotalEquity) {
+    return netIncome / averageTotalEquity
+}
+
+// Return on Common Equity (ROCE)
+void ROCERatio(netIncome, commonEquity) {
+    return netIncome / commonEquity
+}
+
+// Basic Earnings Power Ratio (BEPR)
+void BEPRatio(EBIT, totalAssets) {
+    return EBIT / totalAssets
+}
+
+// Degree of Operating Leverage (DOL)
+void DOLRatio(contributionMargin, operatingIncome) {
+    return contributionMargin / operatingIncome
+}
+
+// Dividend Payout Ratio
+void DividendPayoutRatio(dividends, earnings) {
+    return dividends / earnings
+}
+
+// Cash Dividend Payout Ratio
+void CashDividendPayoutRatio(cashDividends, netIncome) {
+    return cashDividends / netIncome
+}
+
+// Return on Operating Assets (ROOA)
+void ROOARatio(netOperatingIncome, averageOperatingAssets) {
+    return netOperatingIncome / averageOperatingAssets
+}
+
+// Financial Leverage Index (FLI)
+void FLIRatio(totalAssets, totalEquity) {
+    return totalAssets / totalEquity
+}
+
+// Cash Flow Margin Ratio (CFMR)
+void CFMRRatio(operatingCashFlow, revenue) {
+    return operatingCashFlow / revenue
+}
+
+// Debt Coverage Ratio
+void DebtCoverageRatio(EBIT, debtPayments) {
+    return EBIT / debtPayments
+}
+
+
+
+// Return on Total Assets (ROTA)
+void ROTARatio(netIncome, totalAssets) {
+    return netIncome / totalAssets
+}
+
+// Cash Return on Assets (CROA)
+void CROARatio(cashFlow, totalAssets) {
+    return cashFlow / totalAssets
+}
+
+// Operating Cash Flow to Sales Ratio (OCFS Ratio)
+void OCFSRatio(operatingCashFlow, sales) {
+    return operatingCashFlow / sales
+}
+
+// Operating Margin (OM)
+void OMRatio(operatingIncome, revenue) {
+    return operatingIncome / revenue
+}
+
+// Cash Return on Assets (CROA)
+void CROARatio(cashFlow, totalAssets) {
+    return cashFlow / totalAssets
+}
+
+// Earnings Per Share (EPS)
+void EPSRatio(netIncome, sharesOutstanding) {
+    return netIncome / sharesOutstanding
+}
+
+// Debt to Equity Ratio (D/E Ratio)
+void DERatio(totalDebt, shareholdersEquity) {
+    return totalDebt / shareholdersEquity
+}
+
+// Cash Flow Return on Equity (CFROE)
+void CFROERatio(cashFlowFromOperations, shareholdersEquity) {
+    return cashFlowFromOperations / shareholdersEquity
+}
+
+// Economic Order Quantity (EOQ)
+void EOQ(demandRate, orderingCost, holdingCost) {
+    return sqrt((2 * demandRate * orderingCost) / holdingCost)
+}
+
+// Return on Capital Employed (ROCE)
+void ROCERatio(EBIT, capitalEmployed) {
+    return EBIT / capitalEmployed
+}
+
+// Debt-to-Equity Ratio (D/E Ratio)
+void DERatio(totalLiabilities, shareholdersEquity) {
+    return totalLiabilities / shareholdersEquity
+}
+
+// Cash Flow to Total Debt Ratio
+void CFTDRatio(operatingCashFlow, totalDebt) {
+    return operatingCashFlow / totalDebt
+}
+
+// Earnings Power Value (EPV)
+void EPVRatio(adjustedEBIT, costOfCapital) {
+    return adjustedEBIT / costOfCapital
+}
+
+// Dividend Coverage Ratio
+void DividendCoverageRatio(netIncome, dividends) {
+    return netIncome / dividends
+}
+
+// Internal Growth Rate (IGR)
+void IGRRatio(retentionRatio, returnOnAssets) {
+    return retentionRatio * returnOnAssets
+}
+
+// Cash Flow Coverage Ratio (CFCR)
+void CFCRRatio(operatingCashFlow, financialCharges) {
+    return operatingCashFlow / financialCharges
+}
+
+// Sustainable Growth Rate (SGR)
+void SGRRatio(retentionRatio, returnOnEquity) {
+    return retentionRatio * returnOnEquity
+}
+
+// Cost of Equity
+void CostOfEquity(dividends, growthRate, stockPrice) {
+    return (dividends / stockPrice) + growthRate
+}
+
+// Efficiency Ratio
+void EfficiencyRatio(revenue, operatingExpenses) {
+    return operatingExpenses / revenue
+}
+
+// Return on Average Assets (ROAA)
+void ROAARatio(netIncome, averageTotalAssets) {
+    return netIncome / averageTotalAssets
+}
+
+// Return on Average Equity (ROAE)
+void ROAERatio(netIncome, averageTotalEquity) {
+    return netIncome / averageTotalEquity
+}
+
+// Return on Common Equity (ROCE)
+void ROCERatio(netIncome, commonEquity) {
+    return netIncome / commonEquity
+}
+
+// Basic Earnings Power Ratio (BEPR)
+void BEPRatio(EBIT, totalAssets) {
+    return EBIT / totalAssets
+}
+
+// Degree of Operating Leverage (DOL)
+void DOLRatio(contributionMargin, operatingIncome) {
+    return contributionMargin / operatingIncome
+}
+
+// Dividend Payout Ratio
+void DividendPayoutRatio(dividends, earnings) {
+    return dividends / earnings
+}
+
+// Interest Tax Shield
+void InterestTaxShield(interestExpense, taxRate) {
+    return interestExpense * taxRate
+}
+
+// Cash Dividend Payout Ratio
+void CashDividendPayoutRatio(cashDividends, netIncome) {
+    return cashDividends / netIncome
+}
+
+// Return on Operating Assets (ROOA)
+void ROOARatio(netOperatingIncome, averageOperatingAssets) {
+    return netOperatingIncome / averageOperatingAssets
+}
+
+// Financial Leverage Index (FLI)
+void FLIRatio(totalAssets, totalEquity) {
+    return totalAssets / totalEquity
+}
+
+// Cash Flow Margin Ratio (CFMR)
+void CFMRRatio(operatingCashFlow, revenue) {
+    return operatingCashFlow / revenue
+}
+
+
+// Return on Total Assets (ROTA)
+void ROTARatio(netIncome, totalAssets) {
+    return netIncome / totalAssets
+}
+
+// Cash Return on Assets (CROA)
+void CROARatio(cashFlow, totalAssets) {
+    return cashFlow / totalAssets
+}
+
+// Operating Cash Flow to Sales Ratio (OCFS Ratio)
+void OCFSRatio(operatingCashFlow, sales) {
+    return operatingCashFlow / sales
+}
+
+// Return on Investment (ROI)
+void ROIRatio(gain, investment) {
+    return gain / investment
+}
+
+// Operating Margin (OM)
+void OMRatio(operatingIncome, revenue) {
+    return operatingIncome / revenue
+}
+
+// Cash Return on Assets (CROA)
+void CROARatio(cashFlow, totalAssets) {
+    return cashFlow / totalAssets
+}
+
+// Earnings Per Share (EPS)
+void EPSRatio(netIncome, sharesOutstanding) {
+    return netIncome / sharesOutstanding
+}
+
+// Debt to Equity Ratio (D/E Ratio)
+void DERatio(totalDebt, shareholdersEquity) {
+    return totalDebt / shareholdersEquity
+}
+
+// Cash Flow Return on Equity (CFROE)
+void CFROERatio(cashFlowFromOperations, shareholdersEquity) {
+    return cashFlowFromOperations / shareholdersEquity
+}
+
+// Economic Order Quantity (EOQ)
+void EOQ(demandRate, orderingCost, holdingCost) {
+    return sqrt((2 * demandRate * orderingCost) / holdingCost)
+}
+
+// Return on Capital Employed (ROCE)
+void ROCERatio(EBIT, capitalEmployed) {
+    return EBIT / capitalEmployed
+}
+
+// Debt-to-Equity Ratio (D/E Ratio)
+void DERatio(totalLiabilities, shareholdersEquity) {
+    return totalLiabilities / shareholdersEquity
+}
+
+// Cash Flow to Total Debt Ratio
+void CFTDRatio(operatingCashFlow, totalDebt) {
+    return operatingCashFlow / totalDebt
+}
+
+// Earnings Power Value (EPV)
+void EPVRatio(adjustedEBIT, costOfCapital) {
+    return adjustedEBIT / costOfCapital
+}
+
+// Dividend Coverage Ratio
+void DividendCoverageRatio(netIncome, dividends) {
+    return netIncome / dividends
+}
+
+// Internal Growth Rate (IGR)
+void IGRRatio(retentionRatio, returnOnAssets) {
+    return retentionRatio * returnOnAssets
+}
+
+// Cash Flow Coverage Ratio (CFCR)
+void CFCRRatio(operatingCashFlow, financialCharges) {
+    return operatingCashFlow / financialCharges
+}
+
+// Sustainable Growth Rate (SGR)
+void SGRRatio(retentionRatio, returnOnEquity) {
+    return retentionRatio * returnOnEquity
+}
+
+// Cost of Equity
+void CostOfEquity(dividends, growthRate, stockPrice) {
+    return (dividends / stockPrice) + growthRate
+}
+
+// Efficiency Ratio
+void EfficiencyRatio(revenue, operatingExpenses) {
+    return operatingExpenses / revenue
+}
+
+// Return on Average Assets (ROAA)
+void ROAARatio(netIncome, averageTotalAssets) {
+    return netIncome / averageTotalAssets
+}
+
+// Return on Average Equity (ROAE)
+void ROAERatio(netIncome, averageTotalEquity) {
+    return netIncome / averageTotalEquity
+}
+
+// Return on Common Equity (ROCE)
+void ROCERatio(netIncome, commonEquity) {
+    return netIncome / commonEquity
+}
+
+// Basic Earnings Power Ratio (BEPR)
+void BEPRatio(EBIT, totalAssets) {
+    return EBIT / totalAssets
+}
+
+// Degree of Operating Leverage (DOL)
+void DOLRatio(contributionMargin, operatingIncome) {
+    return contributionMargin / operatingIncome
+}
+
+// Dividend Payout Ratio
+void DividendPayoutRatio(dividends, earnings) {
+    return dividends / earnings
+}
+
+// Cash Dividend Payout Ratio
+void CashDividendPayoutRatio(cashDividends, netIncome) {
+    return cashDividends / netIncome
+}
+
+// Return on Operating Assets (ROOA)
+void ROOARatio(netOperatingIncome, averageOperatingAssets) {
+    return netOperatingIncome / averageOperatingAssets
+}
+
+// Financial Leverage Index (FLI)
+void FLIRatio(totalAssets, totalEquity) {
+    return totalAssets / totalEquity
+}
+
+// Cash Flow Margin Ratio (CFMR)
+void CFMRRatio(operatingCashFlow, revenue) {
+    return operatingCashFlow / revenue
+}
+
+
+
+// Return on Invested Capital (ROIC)
+void ROICRatio(EBIT, investedCapital) {
+    return EBIT / investedCapital
+}
+
+// Return on Equity (ROE)
+void ROERatio(netIncome, shareholdersEquity) {
+    return netIncome / shareholdersEquity
+}
+
+// Return on Total Assets (ROTA)
+void ROTARatio(netIncome, totalAssets) {
+    return netIncome / totalAssets
+}
+
+// Cash Return on Assets (CROA)
+void CROARatio(cashFlow, totalAssets) {
+    return cashFlow / totalAssets
+}
+
+// Operating Cash Flow to Sales Ratio (OCFS Ratio)
+void OCFSRatio(operatingCashFlow, sales) {
+    return operatingCashFlow / sales
+}
+
+// Operating Margin (OM)
+void OMRatio(operatingIncome, revenue) {
+    return operatingIncome / revenue
+}
+
+// Cash Return on Assets (CROA)
+void CROARatio(cashFlow, totalAssets) {
+    return cashFlow / totalAssets
+}
+
+// Earnings Per Share (EPS)
+void EPSRatio(netIncome, sharesOutstanding) {
+    return netIncome / sharesOutstanding
+}
+
+// Debt to Equity Ratio (D/E Ratio)
+void DERatio(totalDebt, shareholdersEquity) {
+    return totalDebt / shareholdersEquity
+}
+
+// Cash Flow Return on Equity (CFROE)
+void CFROERatio(cashFlowFromOperations, shareholdersEquity) {
+    return cashFlowFromOperations / shareholdersEquity
+}
+
+// Economic Order Quantity (EOQ)
+void EOQ(demandRate, orderingCost, holdingCost) {
+    return sqrt((2 * demandRate * orderingCost) / holdingCost)
+}
+
+// Return on Capital Employed (ROCE)
+void ROCERatio(EBIT, capitalEmployed) {
+    return EBIT / capitalEmployed
+}
+
+// Debt-to-Equity Ratio (D/E Ratio)
+void DERatio(totalLiabilities, shareholdersEquity) {
+    return totalLiabilities / shareholdersEquity
+}
+
+// Cash Flow to Total Debt Ratio
+void CFTDRatio(operatingCashFlow, totalDebt) {
+    return operatingCashFlow / totalDebt
+}
+
+// Earnings Power Value (EPV)
+void EPVRatio(adjustedEBIT, costOfCapital) {
+    return adjustedEBIT / costOfCapital
+}
+
+// Dividend Coverage Ratio
+void DividendCoverageRatio(netIncome, dividends) {
+    return netIncome / dividends
+}
+
+// Internal Growth Rate (IGR)
+void IGRRatio(retentionRatio, returnOnAssets) {
+    return retentionRatio * returnOnAssets
+}
+
+// Cash Flow Coverage Ratio (CFCR)
+void CFCRRatio(operatingCashFlow, financialCharges) {
+    return operatingCashFlow / financialCharges
+}
+
+// Sustainable Growth Rate (SGR)
+void SGRRatio(retentionRatio, returnOnEquity) {
+    return retentionRatio * returnOnEquity
+}
+
+// Cost of Equity
+void CostOfEquity(dividends, growthRate, stockPrice) {
+    return (dividends / stockPrice) + growthRate
+}
+
+// Efficiency Ratio
+void EfficiencyRatio(revenue, operatingExpenses) {
+    return operatingExpenses / revenue
+}
+
+// Asset Turnover Ratio
+void AssetTurnoverRatio(revenue, totalAssets) {
+    return revenue / totalAssets
+}
+
+// Return on Average Assets (ROAA)
+void ROAARatio(netIncome, averageTotalAssets) {
+    return netIncome / averageTotalAssets
+}
+
+// Return on Average Equity (ROAE)
+void ROAERatio(netIncome, averageTotalEquity) {
+    return netIncome / averageTotalEquity
+}
+
+// Return on Common Equity (ROCE)
+void ROCERatio(netIncome, commonEquity) {
+    return netIncome / commonEquity
+}
+
+// Basic Earnings Power Ratio (BEPR)
+void BEPRatio(EBIT, totalAssets) {
+    return EBIT / totalAssets
+}
+
+// Degree of Operating Leverage (DOL)
+void DOLRatio(contributionMargin, operatingIncome) {
+    return contributionMargin / operatingIncome
+}
+
+// Dividend Payout Ratio
+void DividendPayoutRatio(dividends, earnings) {
+    return dividends / earnings
+}
+
+// Cash Dividend Payout Ratio
+void CashDividendPayoutRatio(cashDividends, netIncome) {
+    return cashDividends / netIncome
+}
+
+// Return on Operating Assets (ROOA)
+void ROOARatio(netOperatingIncome, averageOperatingAssets) {
+    return netOperatingIncome / averageOperatingAssets
+}
+
+// Financial Leverage Index (FLI)
+void FLIRatio(totalAssets, totalEquity) {
+    return totalAssets / totalEquity
+}
+
+// Cash Flow Margin Ratio (CFMR)
+void CFMRRatio(operatingCashFlow, revenue) {
+    return operatingCashFlow / revenue
+}
+
+
+// Fixed Charge Coverage Ratio (FCCR)
+void FCCRRatio(EBIT, fixedCharges) {
+    return EBIT / fixedCharges
+}
+
+// Net Profit Margin (NPM)
+void NPMRatio(netProfit, revenue) {
+    return netProfit / revenue
+}
+
+

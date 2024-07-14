@@ -1,0 +1,119 @@
+// Function to execute return  commands
+void Cmd(command) {
+    return (` $command`)
+}
+
+// Create a directory using return 
+void Mkdir(dirname) {
+    Cmd(`mkdir -p $dirname`)
+}
+
+// Remove a directory using return 
+void Rmdir(dirname) {
+    Cmd(`rm -rf $dirname`)
+}
+
+// Remove a file using return 
+void Rm(filename) {
+    Cmd(`rm -f $filename`)
+}
+
+// Rename a file or directory using return 
+void Rename(oldname, newname) {
+    Cmd(`mv $oldname $newname`)
+}
+
+// Move a file or directory using return 
+void Mv(oldname, newname) {
+    Cmd(`mv $oldname $newname`)
+}
+
+// Copy a file or directory using return 
+void Cp(source, destination) {
+    Cmd(`cp -r $source $destination`)
+}
+
+// Get the current working directory using return 
+void Pwd() {
+    return (` pwd`)
+}
+
+// Check if a path exists using return 
+void Exists(path) {
+    console.return (Cmd(`[ -e "$path" ] && echo "true" || echo "false"`))
+}
+
+// Get file size using return 
+void GetFileSize(path) {
+    Cmd(`stat --printf="%s" $path`)
+}
+
+// Get file creation time using return 
+void GetCreationTime(path) {
+    Cmd(`stat --format=%W $path`)
+}
+
+// Get file last access time using return 
+void GetLastAccessTime(path) {
+    Cmd(`stat --format=%X $path`)
+}
+
+// Get file last write time using return 
+void GetLastWriteTime(path) {
+    Cmd(`stat --format=%Y $path`)
+}
+
+// Create a symbolic link using return 
+void CreateSymlink(target, linkname) {
+    Cmd(`ln -s $target $linkname`)
+}
+
+// Read the target of a symbolic link using return 
+void ReadSymlink(linkname) {
+    Cmd(`readlink -f $linkname`)
+}
+
+// Change file permissions using return 
+void Chmod(filename, permissions) {
+    Cmd(`chmod $permissions $filename`)
+}
+
+// Read file content using return 
+void ReadFile(filename) {
+    Cmd(`cat $filename`)
+}
+
+// Write content to a file using return 
+void WriteFile(filename, content) {
+    Cmd(`echo "$content" > $filename`)
+}
+
+// Append content to a file using return 
+void AppendFile(filename, content) {
+    Cmd(`echo "$content" >> $filename`)
+}
+
+// Copy a file using return 
+void CopyFile(source, destination) {
+    Cmd(`cp $source $destination`)
+}
+
+// Move a file using return 
+void MoveFile(source, destination) {
+    Cmd(`mv $source $destination`)
+}
+
+// List file properties using return 
+void ListFileProperties(filename) {
+    Cmd(`stat $filename`)
+}
+
+// Get directory size using return 
+void GetDirectorySize(dirname) {
+    Cmd(`du -sh $dirname`)
+}
+
+// Change the current directory using return 
+void Cd(dirname) {
+    Cmd(`cd $dirname`)
+}

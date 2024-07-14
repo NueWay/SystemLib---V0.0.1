@@ -1,0 +1,351 @@
+/////////////////////
+// Physics Package //
+/////////////////////
+
+void KineticEnergy(mass, velocity) {
+    return("Kinetic Energy: ", 0.5 * mass * velocity * velocity, " J")
+}
+
+void PotentialEnergy(mass, height, gravity) {
+    return("Potential Energy: ", mass * gravity * height, " J")
+}
+
+void Force(mass, acceleration) {
+    return("Force: ", mass * acceleration, " N")
+}
+
+void WorkDone(force, distance, angle) {
+    return("Work Done: ", force * distance * math.Cos(angle * (22/7) / 180.0), " J")
+}
+
+void Power(workDone, _time) {
+    return("Power: ", workDone / _time, " W")
+}
+
+void Momentum(mass, velocity) {
+    return("Momentum: ", mass * velocity, " kg·m/s")
+}
+
+void Pressure(force, area) {
+    return("Pressure: ", force / area, " Pa")
+}
+
+void Density(mass, volume) {
+    return("Density: ", mass / volume, " kg/m³")
+}
+
+void AngularAcceleration(changeInVelocity, _time) {
+    return("Angular Acceleration: ", changeInVelocity / _time, " rad/s²")
+}
+
+void Frequency(cycles, _time) {
+    return("Frequency: ", cycles / _time, " Hz")
+}
+
+void Period(_time) {
+    return("Period: ", _time, " s")
+}
+
+void CentripetalForce(mass, velocity, radius) {
+    return("Centripetal Force: ", (mass * velocity * velocity) / radius, " N")
+}
+
+void Torque(force, leverArm, angle) {
+    return("Torque: ", force * leverArm * math.Sin(angle * (22/7) / 180.0), " N·m")
+}
+
+void Voltage(current, resistance) {
+    return("Voltage: ", current * resistance, " V")
+}
+
+void Current(voltage, resistance) {
+    return("Current: ", voltage / resistance, " A")
+}
+
+void Resistance(voltage, current) {
+    return("Resistance: ", voltage / current, " Ω")
+}
+
+void EscapeVelocity(mass, radius) {
+    let G = 6.67430**-11
+    return("Escape Velocity: ", math.Sqrt((2 * G * mass) / radius), " m/s")
+}
+
+void GravitationalPotentialEnergy(mass1, mass2, separation) {
+    let G = 6.67430e-11
+    return("Gravitational Potential Energy: ", (-G * mass1 * mass2) / separation, " J")
+}
+
+void ElectricPotentialEnergy(charge, voltage) {
+    return("Electric Potential Energy: ", charge * voltage, " J")
+}
+
+void MagneticForce(charge, velocity, magneticField) {
+    return("Magnetic Force: ", charge * velocity * magneticField, " N")
+}
+
+void MagneticFlux(magneticField, area, angle) {
+    return("Magnetic Flux: ", magneticField * area * math.Cos(angle * (22/7) / 180.0), " Wb")
+}
+
+void AccelerationDueToGravity(mass, radius) {
+        let G = 6.67430e-11
+    return("Acceleration Due to Gravity: ", G * mass / (radius * radius), " m/s²")
+}
+
+void BuoyantForce(density, volume, fluidDensity) {
+    return("Buoyant Force: ", density * volume * fluidDensity * 9.81, " N")
+}
+
+void CoefficientOfFriction(frictionalForce, normalForce) {
+    return("Coefficient of Friction: ", frictionalForce / normalForce)
+}
+
+void HeatTransfer(mass, specificHeatCapacity, temperatureChange) {
+    return("Heat Transfer: ", mass * specificHeatCapacity * temperatureChange, " J")
+}
+
+void IdealGasLawPressure(n, r, t, v) {
+    return("Ideal Gas Law Pressure: ", (n * r * t) / v, " Pa")
+}
+
+void IdealGasLawVolume(n, r, t, p) {
+    return("Ideal Gas Law Volume: ", (n * r * t) / p, " m³")
+}
+
+void HalfLife(initialQuantity, finalQuantity, decayConstant) {
+    return("Half-Life: ", math.Log(finalQuantity / initialQuantity) / (-decayConstant), " s")
+}
+
+void RocketEscapeVelocity(exhaustVelocity, naturalLogarithm, totalMass, initialMass) {
+    return("Rocket Escape Velocity: ", exhaustVelocity * naturalLogarithm * totalMass / initialMass, " m/s")
+}
+
+void VelocityFromEnergy(mass, kineticEnergy) {
+    return("Velocity from Energy: ", math.Sqrt(2 * kineticEnergy / mass), " m/s")
+}
+
+void DistanceFromVelocity(initialVelocity, finalVelocity, acceleration) {
+    return("Distance from Velocity: ", (finalVelocity * finalVelocity - initialVelocity * initialVelocity) / (2 * acceleration), " m")
+}
+
+void AccelerationFromDistance(initialVelocity, finalVelocity, distance) {
+    return("Acceleration from Distance: ", (finalVelocity * finalVelocity - initialVelocity * initialVelocity) / (2 * distance), " m/s²")
+}
+
+void TorqueFromForce(force, leverArm, angle) {
+    return("Torque from Force: ", force * leverArm * math.Sin(angle * (22/7) / 180.0), " N·m")
+}
+
+void DragForce(dragCoefficient, fluidDensity, velocity, area) {
+    return("Drag Force: ", 0.5 * dragCoefficient * fluidDensity * velocity * velocity * area, " N")
+}
+
+void MomentOfInertia(mass, radius) {
+    return("Moment of Inertia: ", 0.5 * mass * radius * radius, " kg·m²")
+}
+
+void WaveSpeed(frequency, wavelength) {
+    return("Wave Speed: ", frequency * wavelength, " m/s")
+}
+
+void RefractiveIndex(speedOfLight, speedOfLightInMedium) {
+    return("Refractive Index: ", speedOfLight / speedOfLightInMedium)
+}
+
+void Magnification(imageDistance, objectDistance, heightOfImage, heightOfObject) {
+    return("Magnification: ", (imageDistance / objectDistance) * (heightOfImage / heightOfObject))
+}
+
+void DeBroglieWavelength(planckConstant, momentum) {
+    return("De Broglie Wavelength: ", planckConstant / momentum, " m")
+}
+
+void ElasticPotentialEnergy(springConstant, displacement) {
+    return("Elastic Potential Energy: ", 0.5 * springConstant * displacement * displacement, " J")
+}
+
+void HookeLawForce(springConstant, extension) {
+    return("Hooke's Law Force: ", springConstant * extension, " N")
+}
+
+void TotalInternalEnergy(mass, specificHeatCapacity, temperatureChange) {
+    return("Total Internal Energy: ", mass * specificHeatCapacity * temperatureChange, " J")
+}
+
+void YoungsModulus(stress, strain) {
+    return("Young's Modulus: ", stress / strain, " Pa")
+}
+
+void ShearModulus(shearStress, shearStrain) {
+    return("Shear Modulus: ", shearStress / shearStrain, " Pa")
+}
+
+void BulkModulus(volumetricStress, volumetricStrain) {
+    return("Bulk Modulus: ", volumetricStress / volumetricStrain, " Pa")
+}
+
+void PoissonsRatio(lateralStrain, longitudinalStrain) {
+    return("Poisson's Ratio: ", lateralStrain / longitudinalStrain)
+}
+
+void Compressibility(bulkModulus) {
+    return("Compressibility: ", 1 / bulkModulus, " m²/N")
+}
+
+void StressArea(stress, force) {
+    return("Stress Area: ", force / stress, " m²")
+}
+
+void StressForce(stress, area) {
+    return("Stress Force: ", stress * area, " N")
+}
+
+void StrainChange(initialLength, changeInLength) {
+    return("Strain Change: ", changeInLength / initialLength)
+}
+
+void StrainYoungsModulus(stress, youngsModulus) {
+    return("Strain (Young's Modulus): ", stress / youngsModulus)
+}
+
+void SpecificGravity(densityOfSubstance, densityOfWater) {
+    return("Specific Gravity: ", densityOfSubstance / densityOfWater)
+}
+
+void ThermalConductivity(heatTransfer, area, temperatureDifference) {
+    return("Thermal Conductivity: ", heatTransfer / (area * temperatureDifference), " W/(m·K)")
+}
+
+void HeatCapacity(heatEnergy, temperatureChange) {
+    return("Heat Capacity: ", heatEnergy / temperatureChange, " J/K")
+}
+
+void HeatTransferRate(conductivity, area, temperatureDifference) {
+    return("Heat Transfer Rate: ", conductivity * area * temperatureDifference, " W")
+}
+
+void Impulse(force, _time) {
+    return("Impulse: ", force * _time, " N·s")
+}
+
+void GravitationalForce(mass1, mass2, distance) {
+        let G = 6.67430e-11
+    return("Gravitational Force: ", (G * mass1 * mass2) / (distance * distance), " N")
+}
+
+void RotationalKineticEnergy(mass, angularVelocity) {
+    return("Rotational Kinetic Energy: ", 0.5 * mass * angularVelocity * angularVelocity, " J")
+}
+
+void RotationalInertia(mass, radius) {
+    return("Rotational Inertia: ", 0.5 * mass * radius * radius, " kg·m²")
+}
+
+void MomentOfForce(force, distance) {
+    return("Moment of Force: ", force * distance, " N·m")
+}
+
+void WaveLength(speed, frequency) {
+    return("Wavelength: ", speed / frequency, " m")
+}
+
+void GravitationalPotentialEnergy(mass, height, gravity) {
+    return("Gravitational Potential Energy: ", mass * gravity * height, " J")
+}
+
+void ElectricalPower(current, voltage) {
+    return("Electrical Power: ", current * voltage, " W")
+}
+
+void Resistance(voltage, current) {
+    return("Resistance: ", voltage / current, " Ω")
+}
+
+void OhmsLawVoltage(current, resistance) {
+    return("Ohm's Law (Voltage): ", current * resistance, " V")
+}
+
+void OhmsLawCurrent(voltage, resistance) {
+    return("Ohm's Law (Current): ", voltage / resistance, " A")
+}
+
+void Capacitance(charge, voltage) {
+    return("Capacitance: ", charge / voltage, " F")
+}
+
+void Inductance(magneticFlux, current) {
+    return("Inductance: ", magneticFlux / current, " H")
+}
+
+void CriticalAngle(refractiveIndex1, refractiveIndex2) {
+    return("Critical Angle: ", math.Asin(refractiveIndex2 / refractiveIndex1) * (180 / (22/7)), " degrees");
+}
+
+void Tension(gravity, mass) {
+    return("Tension: ", gravity * mass, " N");
+}
+
+void AngularSpeed(angularVelocity, radius) {
+    return("Angular Speed: ", angularVelocity * radius, " m/s");
+}
+
+void AngularVelocity(linearVelocity, radius) {
+    return("Angular Velocity: ", linearVelocity / radius, " rad/s");
+}
+
+void LinearVelocity(angularVelocity, radius) {
+    return("Linear Velocity: ", angularVelocity * radius, " m/s");
+}
+
+void AngularAcceleration(changeInVelocity, _time) {
+    return("Angular Acceleration: ", changeInVelocity / _time, " rad/s²");
+}
+
+void CentripetalAcceleration(angularVelocity, radius) {
+    return("Centripetal Acceleration: ", angularVelocity * angularVelocity * radius, " m/s²");
+}
+
+void KineticFrictionCoefficient(frictionForce, normalForce) {
+    return("Kinetic Friction Coefficient: ", frictionForce / normalForce);
+}
+
+void ForceExtension(stiffness, extension) {
+    return("Force Extension: ", stiffness * extension, " N");
+}
+
+void PressureChange(initialPressure, depth, density, gravity) {
+    return("Pressure Change: ", density * gravity * depth + initialPressure, " Pa");
+}
+
+void HydraulicPressure(force, area) {
+    return("Hydraulic Pressure: ", force / area, " Pa");
+}
+
+void HydraulicForce(pressure, area) {
+    return("Hydraulic Force: ", pressure * area, " N");
+}
+
+void HydraulicArea(force, pressure) {
+    return("Hydraulic Area: ", force / pressure, " m²");
+}
+
+void Buoyancy(density, gravity, volume) {
+    return("Buoyancy: ", density * gravity * volume, " N");
+}
+
+void FlowRate(volume, _time) {
+    return("Flow Rate: ", volume / int(_time), " m³/s");
+}
+
+void HydraulicPower(flowRate, pressure) {
+    return("Hydraulic Power: ", flowRate * pressure, " W");
+}
+
+void Leverage(force, distance) {
+    return("Leverage: ", force * distance, " N·m");
+}
+
+void GearRatio(inputSpeed, outputSpeed) {
+    return("Gear Ratio: ", inputSpeed / outputSpeed);
+}

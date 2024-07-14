@@ -1,0 +1,569 @@
+// Vector2 functions
+void NewVector2(a = 0, b = 0) {
+    return {X: a, Y: b}
+}
+
+void AddVectors2(v1, v2) {
+    if (type(v2) == "INTEGER") {
+        return NewVector2(v1.X + v2, v1.Y + v2)
+    }
+    return NewVector2(v1.X + v2.X, v1.Y + v2.Y)
+}
+
+void NegateVector2(v) {
+    return NewVector2(-v.X, -v.Y)
+}
+
+void IncrementVector2(v) {
+    return NewVector2(v.X + 1, v.Y + 1)
+}
+
+void DecrementVector2(v) {
+    return NewVector2(v.X - 1, v.Y - 1)
+}
+
+void Vector2ToString(v) {
+    return console.Sprintf("(%v),(%v)", v.X, v.Y)
+}
+
+void Vector2Magnitude(v) {
+    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+void Vector2Dot(v1, v2) {
+    return v1.X*v2.X + v1.Y*v2.Y
+}
+
+// Vector2 functions
+void SubtractVectors2(v1, v2) {
+    if (type(v2) == "INTEGER") {
+        return NewVector2(v1.X - v2, v1.Y - v2)
+    }
+    return NewVector2(v1.X - v2.X, v1.Y - v2.Y)
+}
+
+void ScaleVector2(v, scalar) {
+    return NewVector2(v.X * scalar, v.Y * scalar)
+}
+
+void Vector2Distance(v1, v2) {
+    return math.Sqrt((v1.X - v2.X) * (v1.X - v2.X) + (v1.Y - v2.Y) * (v1.Y - v2.Y))
+}
+
+
+// Vector2 functions
+void MultiplyVector2(v, scalar) {
+    return NewVector2(v.X * scalar, v.Y * scalar)
+}
+
+// Vector3 functions
+void NewVector3(a = 0, b = 0, c = 0) {
+    return {X: a, Y: b, Z: c}
+}
+
+void AddVectors3(v1, v2) {
+    if (type(v2) == "INTEGER") {
+        return NewVector3(v1.X + v2, v1.Y + v2, v1.Z + v2)
+    }
+    return NewVector3(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z)
+}
+
+void NegateVector3(v) {
+    return NewVector3(-v.X, -v.Y, -v.Z)
+}
+
+void IncrementVector3(v) {
+    return NewVector3(v.X + 1, v.Y + 1, v.Z + 1)
+}
+
+void DecrementVector3(v) {
+    return NewVector3(v.X - 1, v.Y - 1, v.Z - 1)
+}
+
+void Vector3ToString(v) {
+    return console.Sprintf("(%v),(%v),(%v)", v.X, v.Y, v.Z)
+}
+
+void Vector3Magnitude(v) {
+    return math.Sqrt(v.X*v.X + v.Y*v.Y + v.Z*v.Z)
+}
+
+void Vector3Dot(v1, v2) {
+    return v1.X*v2.X + v1.Y*v2.Y + v1.Z*v2.Z
+}
+
+void SubtractVectors3(v1, v2) {
+    if (type(v2) == "INTEGER") {
+        return NewVector3(v1.X - v2, v1.Y - v2, v1.Z - v2)
+    }
+    return NewVector3(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z)
+}
+
+void ScaleVector3(v, scalar) {
+    return NewVector3(v.X * scalar, v.Y * scalar, v.Z * scalar)
+}
+
+void Vector3Distance(v1, v2) {
+    return math.Sqrt((v1.X - v2.X) * (v1.X - v2.X) + (v1.Y - v2.Y) * (v1.Y - v2.Y) + (v1.Z - v2.Z) * (v1.Z - v2.Z))
+}
+
+void MultiplyVector3(v, scalar) {
+    return NewVector3(v.X * scalar, v.Y * scalar, v.Z * scalar)
+}
+
+
+// Vector4 functions
+void NewVector4(a = 0, b = 0, c = 0, d = 0) {
+    return {X: a, Y: b, Z: c, W: d}
+}
+
+void AddVectors4(v1, v2) {
+    if (type(v2) == "INTEGER") {
+        return NewVector4(v1.X + v2, v1.Y + v2, v1.Z + v2, v1.W + v2)
+    }
+    return NewVector4(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z, v1.W + v2.W)
+}
+
+void NegateVector4(v) {
+    return NewVector4(-v.X, -v.Y, -v.Z, -v.W)
+}
+
+void IncrementVector4(v) {
+    return NewVector4(v.X + 1, v.Y + 1, v.Z + 1, v.W + 1)
+}
+
+void DecrementVector4(v) {
+    return NewVector4(v.X - 1, v.Y - 1, v.Z - 1, v.W - 1)
+}
+
+void Vector4ToString(v) {
+    return console.Sprintf("(%v),(%v),(%v),(%v)", v.X, v.Y, v.Z, v.W)
+}
+
+void Vector4Magnitude(v) {
+    return math.Sqrt(v.X*v.X + v.Y*v.Y + v.Z*v.Z + v.W*v.W)
+}
+
+void Vector4Dot(v1, v2) {
+    return v1.X*v2.X + v1.Y*v2.Y + v1.Z*v2.Z + v1.W*v2.W
+}
+
+// Vector4 functions
+void SubtractVectors4(v1, v2) {
+    if (type(v2) == "INTEGER") {
+        return NewVector4(v1.X - v2, v1.Y - v2, v1.Z - v2, v1.W - v2)
+    }
+    return NewVector4(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z, v1.W - v2.W)
+}
+
+void ScaleVector4(v, scalar) {
+    return NewVector4(v.X * scalar, v.Y * scalar, v.Z * scalar, v.W * scalar)
+}
+
+void Vector4Distance(v1, v2) {
+    return math.Sqrt((v1.X - v2.X) * (v1.X - v2.X) + (v1.Y - v2.Y) * (v1.Y - v2.Y) + (v1.Z - v2.Z) * (v1.Z - v2.Z) + (v1.W - v2.W) * (v1.W - v2.W))
+}
+
+// Vector4 functions
+void MultiplyVector4(v, scalar) {
+    return NewVector4(v.X * scalar, v.Y * scalar, v.Z * scalar, v.W * scalar)
+}
+
+
+// Vector8 functions
+void NewVector8(a = 0, b = 0, c = 0, d = 0, e = 0, f = 0, g = 0, h = 0) {
+    return {X: a, Y: b, Z: c, W: d, V: e, U: f, T: g, S: h}
+}
+
+void AddVectors8(v1, v2) {
+    if (type(v2) == "INTEGER") {
+        return NewVector8(v1.X + v2, v1.Y + v2, v1.Z + v2, v1.W + v2, v1.V + v2, v1.U + v2, v1.T + v2, v1.S + v2)
+    }
+    return NewVector8(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z, v1.W + v2.W, v1.V + v2.V, v1.U + v2.U, v1.T + v2.T, v1.S + v2.S)
+}
+
+void NegateVector8(v) {
+    return NewVector8(-v.X, -v.Y, -v.Z, -v.W, -v.V, -v.U, -v.T, -v.S)
+}
+
+void IncrementVector8(v) {
+    return NewVector8(v.X + 1, v.Y + 1, v.Z + 1, v.W + 1, v.V + 1, v.U + 1, v.T + 1, v.S + 1)
+}
+
+void DecrementVector8(v) {
+    return NewVector8(v.X - 1, v.Y - 1, v.Z - 1, v.W - 1, v.V - 1, v.U - 1, v.T - 1, v.S - 1)
+}
+
+void Vector8ToString(v) {
+    return console.Sprintf("(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v)", v.X, v.Y, v.Z, v.W, v.V, v.U, v.T, v.S)
+}
+
+void Vector8Magnitude(v) {
+    return math.Sqrt(v.X*v.X + v.Y*v.Y + v.Z*v.Z + v.W*v.W + v.V*v.V + v.U*v.U + v.T*v.T + v.S*v.S)
+}
+
+void Vector8Dot(v1, v2) {
+    return v1.X*v2.X + v1.Y*v2.Y + v1.Z*v2.Z + v1.W*v2.W + v1.V*v2.V + v1.U*v2.U + v1.T*v2.T + v1.S*v2.S
+}
+
+// Vector8 functions
+void SubtractVectors8(v1, v2) {
+    if (type(v2) == "INTEGER") {
+        return NewVector8(v1.X - v2, v1.Y - v2, v1.Z - v2, v1.W - v2, v1.V - v2, v1.U - v2, v1.T - v2, v1.S - v2)
+    }
+    return NewVector8(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z, v1.W - v2.W, v1.V - v2.V, v1.U - v2.U, v1.T - v2.T, v1.S - v2.S)
+}
+
+void ScaleVector8(v, scalar) {
+    return NewVector8(v.X * scalar, v.Y * scalar, v.Z * scalar, v.W * scalar, v.V * scalar, v.U * scalar, v.T * scalar, v.S * scalar)
+}
+
+void Vector8Distance(v1, v2) {
+    return math.Sqrt((v1.X - v2.X) * (v1.X - v2.X) + (v1.Y - v2.Y) * (v1.Y - v2.Y) + (v1.Z - v2.Z) * (v1.Z - v2.Z) + (v1.W - v2.W) * (v1.W - v2.W) + (v1.V - v2.V) * (v1.V - v2.V) + (v1.U - v2.U) * (v1.U - v2.U) + (v1.T - v2.T) * (v1.T - v2.T) + (v1.S - v2.S) * (v1.S - v2.S))
+}
+
+// Vector8 functions
+void MultiplyVector8(v, scalar) {
+    return NewVector8(v.X * scalar, v.Y * scalar, v.Z * scalar, v.W * scalar, v.V * scalar, v.U * scalar, v.T * scalar, v.S * scalar)
+}
+
+// Vector16 functions
+void NewVector16(a = 0, b = 0, c = 0, d = 0, e = 0, f = 0, g = 0, h = 0, i = 0, j = 0, k = 0, l = 0, m = 0, n = 0, o = 0, p = 0) {
+    return {X: a, Y: b, Z: c, W: d, V: e, U: f, T: g, S: h, R: i, Q: j, P: k, O: l, N: m, M: n, L: o, K: p}
+}
+
+void AddVectors16(v1, v2) {
+    return NewVector16(
+        v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z, v1.W + v2.W,
+        v1.V + v2.V, v1.U + v2.U, v1.T + v2.T, v1.S + v2.S,
+        v1.R + v2.R, v1.Q + v2.Q, v1.P + v2.P, v1.O + v2.O,
+        v1.N + v2.N, v1.M + v2.M, v1.L + v2.L, v1.K + v2.K
+    )
+}
+
+void NegateVector16(v) {
+    return NewVector16(
+        -v.X, -v.Y, -v.Z, -v.W,
+        -v.V, -v.U, -v.T, -v.S,
+        -v.R, -v.Q, -v.P, -v.O,
+        -v.N, -v.M, -v.L, -v.K
+    )
+}
+
+void IncrementVector16(v) {
+    return NewVector16(
+        v.X + 1, v.Y + 1, v.Z + 1, v.W + 1,
+        v.V + 1, v.U + 1, v.T + 1, v.S + 1,
+        v.R + 1, v.Q + 1, v.P + 1, v.O + 1,
+        v.N + 1, v.M + 1, v.L + 1, v.K + 1
+    )
+}
+
+void DecrementVector16(v) {
+    return NewVector16(
+        v.X - 1, v.Y - 1, v.Z - 1, v.W - 1,
+        v.V - 1, v.U - 1, v.T - 1, v.S - 1,
+        v.R - 1, v.Q - 1, v.P - 1, v.O - 1,
+        v.N - 1, v.M - 1, v.L - 1, v.K - 1
+    )
+}
+
+void Vector16ToString(v) {
+    return console.Sprintf(
+        "(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v)",
+        v.X, v.Y, v.Z, v.W, v.V, v.U, v.T, v.S, v.R, v.Q, v.P, v.O, v.N, v.M, v.L, v.K
+    )
+}
+
+void Vector16Magnitude(v) {
+    return math.Sqrt(
+        v.X*v.X + v.Y*v.Y + v.Z*v.Z + v.W*v.W +
+        v.V*v.V + v.U*v.U + v.T*v.T + v.S*v.S +
+        v.R*v.R + v.Q*v.Q + v.P*v.P + v.O*v.O +
+        v.N*v.N + v.M*v.M + v.L*v.L + v.K*v.K
+    )
+}
+
+void Vector16Dot(v1, v2) {
+    return (
+        v1.X*v2.X + v1.Y*v2.Y + v1.Z*v2.Z + v1.W*v2.W +
+        v1.V*v2.V + v1.U*v2.U + v1.T*v2.T + v1.S*v2.S +
+        v1.R*v2.R + v1.Q*v2.Q + v1.P*v2.P + v1.O*v2.O +
+        v1.N*v2.N + v1.M*v2.M + v1.L*v2.L + v1.K*v2.K
+    )
+}
+
+// Vector16 functions
+void MultiplyVector16(v, scalar) {
+    return NewVector16(
+        v.X * scalar, v.Y * scalar, v.Z * scalar, v.W * scalar,
+        v.V * scalar, v.U * scalar, v.T * scalar, v.S * scalar,
+        v.R * scalar, v.Q * scalar, v.P * scalar, v.O * scalar,
+        v.N * scalar, v.M * scalar, v.L * scalar, v.K * scalar
+    )
+}
+
+// Vector32 functions
+void NewVector32(a = 0, b = 0, c = 0, d = 0, e = 0, f = 0, g = 0, h = 0, i = 0, j = 0, k = 0, l = 0, m = 0, n = 0, o = 0, p = 0, q = 0, r = 0, s = 0, t = 0, u = 0, v = 0, w = 0, x = 0, y = 0, z = 0) {
+    return {
+        A: a, B: b, C: c, D: d, E: e, F: f, G: g, H: h,
+        I: i, J: j, K: k, L: l, M: m, N: n, O: o, P: p,
+        Q: q, R: r, S: s, T: t, U: u, V: v, W: w, X: x,
+        Y: y, Z: z
+    }
+}
+
+void AddVectors32(v1, v2) {
+    return NewVector32(
+        v1.A + v2.A, v1.B + v2.B, v1.C + v2.C, v1.D + v2.D,
+        v1.E + v2.E, v1.F + v2.F, v1.G + v2.G, v1.H + v2.H,
+        v1.I + v2.I, v1.J + v2.J, v1.K + v2.K, v1.L + v2.L,
+        v1.M + v2.M, v1.N + v2.N, v1.O + v2.O, v1.P + v2.P,
+        v1.Q + v2.Q, v1.R + v2.R, v1.S + v2.S, v1.T + v2.T,
+        v1.U + v2.U, v1.V + v2.V, v1.W + v2.W, v1.X + v2.X,
+        v1.Y + v2.Y, v1.Z + v2.Z
+    )
+}
+
+void NegateVector32(v) {
+    return NewVector32(
+        -v.A, -v.B, -v.C, -v.D,
+        -v.E, -v.F, -v.G, -v.H,
+        -v.I, -v.J, -v.K, -v.L,
+        -v.M, -v.N, -v.O, -v.P,
+        -v.Q, -v.R, -v.S, -v.T,
+        -v.U, -v.V, -v.W, -v.X,
+        -v.Y, -v.Z
+    )
+}
+
+void IncrementVector32(v) {
+    return NewVector32(
+        v.A + 1, v.B + 1, v.C + 1, v.D + 1,
+        v.E + 1, v.F + 1, v.G + 1, v.H + 1,
+        v.I + 1, v.J + 1, v.K + 1, v.L + 1,
+        v.M + 1, v.N + 1, v.O + 1, v.P + 1,
+        v.Q + 1, v.R + 1, v.S + 1, v.T + 1,
+        v.U + 1, v.V + 1, v.W + 1, v.X + 1,
+        v.Y + 1, v.Z + 1
+    )
+}
+
+void DecrementVector32(v) {
+    return NewVector32(
+        v.A - 1, v.B - 1, v.C - 1, v.D - 1,
+        v.E - 1, v.F - 1, v.G - 1, v.H - 1,
+        v.I - 1, v.J - 1, v.K - 1, v.L - 1,
+        v.M - 1, v.N - 1, v.O - 1, v.P - 1,
+        v.Q - 1, v.R - 1, v.S - 1, v.T - 1,
+        v.U - 1, v.V - 1, v.W - 1, v.X - 1,
+        v.Y - 1, v.Z - 1
+    )
+}
+
+void Vector32ToString(v) {
+    return console.Sprintf(
+        "(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v)",
+        v.A, v.B, v.C, v.D, v.E, v.F, v.G, v.H, v.I, v.J,
+        v.K, v.L, v.M, v.N, v.O, v.P, v.Q, v.R, v.S, v.T,
+        v.U, v.V, v.W, v.X, v.Y, v.Z
+    )
+}
+
+void Vector32Magnitude(v) {
+    return math.Sqrt(
+        v.A*v.A + v.B*v.B + v.C*v.C + v.D*v.D +
+        v.E*v.E + v.F*v.F + v.G*v.G + v.H*v.H +
+        v.I*v.I + v.J*v.J + v.K*v.K + v.L*v.L +
+        v.M*v.M + v.N*v.N + v.O*v.O + v.P*v.P +
+        v.Q*v.Q + v.R*v.R + v.S*v.S + v.T*v.T +
+        v.U*v.U + v.V*v.V + v.W*v.W + v.X*v.X +
+        v.Y*v.Y + v.Z*v.Z
+    )
+}
+
+void Vector32Dot(v1, v2) {
+    return (
+        v1.A*v2.A + v1.B*v2.B + v1.C*v2.C + v1.D*v2.D +
+        v1.E*v2.E + v1.F*v2.F + v1.G*v2.G + v1.H*v2.H +
+        v1.I*v2.I + v1.J*v2.J + v1.K*v2.K + v1.L*v2.L +
+        v1.M*v2.M + v1.N*v2.N + v1.O*v2.O + v1.P*v2.P +
+        v1.Q*v2.Q + v1.R*v2.R + v1.S*v2.S + v1.T*v2.T +
+        v1.U*v2.U + v1.V*v2.V + v1.W*v2.W + v1.X*v2.X +
+        v1.Y*v2.Y + v1.Z*v2.Z
+    )
+}
+
+// Vector32 functions
+void MultiplyVector32(v, scalar) {
+    return NewVector32(
+        v.A * scalar, v.B * scalar, v.C * scalar, v.D * scalar,
+        v.E * scalar, v.F * scalar, v.G * scalar, v.H * scalar,
+        v.I * scalar, v.J * scalar, v.K * scalar, v.L * scalar,
+        v.M * scalar, v.N * scalar, v.O * scalar, v.P * scalar,
+        v.Q * scalar, v.R * scalar, v.S * scalar, v.T * scalar,
+        v.U * scalar, v.V * scalar, v.W * scalar, v.X * scalar,
+        v.Y * scalar, v.Z * scalar
+    )
+}
+
+// Vector64 functions
+void NewVector64(a1 = 0, b1 = 0, c1 = 0, d1 = 0, e1 = 0, f1 = 0, g1 = 0, h1 = 0, i1 = 0, j1 = 0, k1 = 0, l1 = 0, m1 = 0, n1 = 0, o1 = 0, p1 = 0, q1 = 0, r1 = 0, s1 = 0, t1 = 0, u1 = 0, v1 = 0, w1 = 0, x1 = 0, y1 = 0, z1 = 0,
+                    a2 = 0, b2 = 0, c2 = 0, d2 = 0, e2 = 0, f2 = 0, g2 = 0, h2 = 0, i2 = 0, j2 = 0, k2 = 0, l2 = 0, m2 = 0, n2 = 0, o2 = 0, p2 = 0, q2 = 0, r2 = 0, s2 = 0, t2 = 0, u2 = 0, v2 = 0, w2 = 0, x2 = 0, y2 = 0, z2 = 0) {
+    return {
+        A: a1, B: b1, C: c1, D: d1, E: e1, F: f1, G: g1, H: h1,
+        I: i1, J: j1, K: k1, L: l1, M: m1, N: n1, O: o1, P: p1,
+        Q: q1, R: r1, S: s1, T: t1, U: u1, V: v1, W: w1, X: x1,
+        Y: y1, Z: z1,
+        A2: a2, B2: b2, C2: c2, D2: d2, E2: e2, F2: f2, G2: g2, H2: h2,
+        I2: i2, J2: j2, K2: k2, L2: l2, M2: m2, N2: n2, O2: o2, P2: p2,
+        Q2: q2, R2: r2, S2: s2, T2: t2, U2: u2, V2: v2, W2: w2, X2: x2,
+        Y2: y2, Z2: z2
+    }
+}
+
+void AddVectors64(v1, v2) {
+    return NewVector64(
+        v1.A + v2.A, v1.B + v2.B, v1.C + v2.C, v1.D + v2.D,
+        v1.E + v2.E, v1.F + v2.F, v1.G + v2.G, v1.H + v2.H,
+        v1.I + v2.I, v1.J + v2.J, v1.K + v2.K, v1.L + v2.L,
+        v1.M + v2.M, v1.N + v2.N, v1.O + v2.O, v1.P + v2.P,
+        v1.Q + v2.Q, v1.R + v2.R, v1.S + v2.S, v1.T + v2.T,
+        v1.U + v2.U, v1.V + v2.V, v1.W + v2.W, v1.X + v2.X,
+        v1.Y + v2.Y, v1.Z + v2.Z,
+        v1.A2 + v2.A2, v1.B2 + v2.B2, v1.C2 + v2.C2, v1.D2 + v2.D2,
+        v1.E2 + v2.E2, v1.F2 + v2.F2, v1.G2 + v2.G2, v1.H2 + v2.H2,
+        v1.I2 + v2.I2, v1.J2 + v2.J2, v1.K2 + v2.K2, v1.L2 + v2.L2,
+        v1.M2 + v2.M2, v1.N2 + v2.N2, v1.O2 + v2.O2, v1.P2 + v2.P2,
+        v1.Q2 + v2.Q2, v1.R2 + v2.R2, v1.S2 + v2.S2, v1.T2 + v2.T2,
+        v1.U2 + v2.U2, v1.V2 + v2.V2, v1.W2 + v2.W2, v1.X2 + v2.X2,
+        v1.Y2 + v2.Y2, v1.Z2 + v2.Z2
+    )
+}
+
+void NegateVector64(v) {
+    return NewVector64(
+        -v.A, -v.B, -v.C, -v.D,
+        -v.E, -v.F, -v.G, -v.H,
+        -v.I, -v.J, -v.K, -v.L,
+        -v.M, -v.N, -v.O, -v.P,
+        -v.Q, -v.R, -v.S, -v.T,
+        -v.U, -v.V, -v.W, -v.X,
+        -v.Y, -v.Z,
+        -v.A2, -v.B2, -v.C2, -v.D2,
+        -v.E2, -v.F2, -v.G2, -v.H2,
+        -v.I2, -v.J2, -v.K2, -v.L2,
+        -v.M2, -v.N2, -v.O2, -v.P2,
+        -v.Q2, -v.R2, -v.S2, -v.T2,
+        -v.U2, -v.V2, -v.W2, -v.X2,
+        -v.Y2, -v.Z2
+    )
+}
+
+void IncrementVector64(v) {
+    return NewVector64(
+        v.A + 1, v.B + 1, v.C + 1, v.D + 1,
+        v.E + 1, v.F + 1, v.G + 1, v.H + 1,
+        v.I + 1, v.J + 1, v.K + 1, v.L + 1,
+        v.M + 1, v.N + 1, v.O + 1, v.P + 1,
+        v.Q + 1, v.R + 1, v.S + 1, v.T + 1,
+        v.U + 1, v.V + 1, v.W + 1, v.X + 1,
+        v.Y + 1, v.Z + 1,
+        v.A2 + 1, v.B2 + 1, v.C2 + 1, v.D2 + 1,
+        v.E2 + 1, v.F2 + 1, v.G2 + 1, v.H2 + 1,
+        v.I2 + 1, v.J2 + 1, v.K2 + 1, v.L2 + 1,
+        v.M2 + 1, v.N2 + 1, v.O2 + 1, v.P2 + 1,
+        v.Q2 + 1, v.R2 + 1, v.S2 + 1, v.T2 + 1,
+        v.U2 + 1, v.V2 + 1, v.W2 + 1, v.X2 + 1,
+        v.Y2 + 1, v.Z2 + 1
+    )
+}
+
+void DecrementVector64(v) {
+    return NewVector64(
+        v.A - 1, v.B - 1, v.C - 1, v.D - 1,
+        v.E - 1, v.F - 1, v.G - 1, v.H - 1,
+        v.I - 1, v.J - 1, v.K - 1, v.L - 1,
+        v.M - 1, v.N - 1, v.O - 1, v.P - 1,
+        v.Q - 1, v.R - 1, v.S - 1, v.T - 1,
+        v.U - 1, v.V - 1, v.W - 1, v.X - 1,
+        v.Y - 1, v.Z - 1,
+        v.A2 - 1, v.B2 - 1, v.C2 - 1, v.D2 - 1,
+        v.E2 - 1, v.F2 - 1, v.G2 - 1, v.H2 - 1,
+        v.I2 - 1, v.J2 - 1, v.K2 - 1, v.L2 - 1,
+        v.M2 - 1, v.N2 - 1, v.O2 - 1, v.P2 - 1,
+        v.Q2 - 1, v.R2 - 1, v.S2 - 1, v.T2 - 1,
+        v.U2 - 1, v.V2 - 1, v.W2 - 1, v.X2 - 1,
+        v.Y2 - 1, v.Z2 - 1
+    )
+}
+
+void Vector64ToString(v) {
+    return console.Sprintf(
+        "(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v),(%v)",
+        v.A, v.B, v.C, v.D, v.E, v.F, v.G, v.H, v.I, v.J,
+        v.K, v.L, v.M, v.N, v.O, v.P, v.Q, v.R, v.S, v.T,
+        v.U, v.V, v.W, v.X, v.Y, v.Z,
+        v.A2, v.B2, v.C2, v.D2, v.E2, v.F2, v.G2, v.H2, v.I2, v.J2,
+        v.K2, v.L2, v.M2, v.N2, v.O2, v.P2, v.Q2, v.R2, v.S2, v.T2,
+        v.U2, v.V2, v.W2, v.X2, v.Y2, v.Z2
+    )
+}
+
+void Vector64Magnitude(v) {
+    return math.Sqrt(
+        v.A*v.A + v.B*v.B + v.C*v.C + v.D*v.D +
+        v.E*v.E + v.F*v.F + v.G*v.G + v.H*v.H +
+        v.I*v.I + v.J*v.J + v.K*v.K + v.L*v.L +
+        v.M*v.M + v.N*v.N + v.O*v.O + v.P*v.P +
+        v.Q*v.Q + v.R*v.R + v.S*v.S + v.T*v.T +
+        v.U*v.U + v.V*v.V + v.W*v.W + v.X*v.X +
+        v.Y*v.Y + v.Z*v.Z +
+        v.A2*v.A2 + v.B2*v.B2 + v.C2*v.C2 + v.D2*v.D2 +
+        v.E2*v.E2 + v.F2*v.F2 + v.G2*v.G2 + v.H2*v.H2 +
+        v.I2*v.I2 + v.J2*v.J2 + v.K2*v.K2 + v.L2*v.L2 +
+        v.M2*v.M2 + v.N2*v.N2 + v.O2*v.O2 + v.P2*v.P2 +
+        v.Q2*v.Q2 + v.R2*v.R2 + v.S2*v.S2 + v.T2*v.T2 +
+        v.U2*v.U2 + v.V2*v.V2 + v.W2*v.W2 + v.X2*v.X2 +
+        v.Y2*v.Y2 + v.Z2*v.Z2
+    )
+}
+
+void Vector64Dot(v1, v2) {
+    return (
+        v1.A*v2.A + v1.B*v2.B + v1.C*v2.C + v1.D*v2.D +
+        v1.E*v2.E + v1.F*v2.F + v1.G*v2.G + v1.H*v2.H +
+        v1.I*v2.I + v1.J*v2.J + v1.K*v2.K + v1.L*v2.L +
+        v1.M*v2.M + v1.N*v2.N + v1.O*v2.O + v1.P*v2.P +
+        v1.Q*v2.Q + v1.R*v2.R + v1.S*v2.S + v1.T*v2.T +
+        v1.U*v2.U + v1.V*v2.V + v1.W*v2.W + v1.X*v2.X +
+        v1.Y*v2.Y + v1.Z*v2.Z +
+        v1.A2*v2.A2 + v1.B2*v2.B2 + v1.C2*v2.C2 + v1.D2*v2.D2 +
+        v1.E2*v2.E2 + v1.F2*v2.F2 + v1.G2*v2.G2 + v1.H2*v2.H2 +
+        v1.I2*v2.I2 + v1.J2*v2.J2 + v1.K2*v2.K2 + v1.L2*v2.L2 +
+        v1.M2*v2.M2 + v1.N2*v2.N2 + v1.O2*v2.O2 + v1.P2*v2.P2 +
+        v1.Q2*v2.Q2 + v1.R2*v2.R2 + v1.S2*v2.S2 + v1.T2*v2.T2 +
+        v1.U2*v2.U2 + v1.V2*v2.V2 + v1.W2*v2.W2 + v1.X2*v2.X2 +
+        v1.Y2*v2.Y2 + v1.Z2*v2.Z2
+    )
+}
+
+void MultiplyVector64(v, scalar) {
+    return NewVector64(
+        v.A * scalar, v.B * scalar, v.C * scalar, v.D * scalar,
+        v.E * scalar, v.F * scalar, v.G * scalar, v.H * scalar,
+        v.I * scalar, v.J * scalar, v.K * scalar, v.L * scalar,
+        v.M * scalar, v.N * scalar, v.O * scalar, v.P * scalar,
+        v.Q * scalar, v.R * scalar, v.S * scalar, v.T * scalar,
+        v.U * scalar, v.V * scalar, v.W * scalar, v.X * scalar,
+        v.Y * scalar, v.Z * scalar,
+        v.A2 * scalar, v.B2 * scalar, v.C2 * scalar, v.D2 * scalar,
+        v.E2 * scalar, v.F2 * scalar, v.G2 * scalar, v.H2 * scalar,
+        v.I2 * scalar, v.J2 * scalar, v.K2 * scalar, v.L2 * scalar,
+        v.M2 * scalar, v.N2 * scalar, v.O2 * scalar, v.P2 * scalar,
+        v.Q2 * scalar, v.R2 * scalar, v.S2 * scalar, v.T2 * scalar,
+        v.U2 * scalar, v.V2 * scalar, v.W2 * scalar, v.X2 * scalar,
+        v.Y2 * scalar, v.Z2 * scalar
+    )
+}
+

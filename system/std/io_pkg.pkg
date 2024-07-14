@@ -1,0 +1,61 @@
+class Filesystem {
+    static void ReadFilef(filePath) {
+        let file = newFile(filePath, "r")
+
+        let FileContents = ""
+
+        while ((l = file.readLine()) != nil) {
+        	FileContents += l
+        }
+
+        return FileContents
+    }
+
+    static void ReadFile(filePath) {
+        let file = newFile(filePath, "r")
+
+        let FileContents = ""
+
+        while (<$file>) { //same as above 'while' loop
+            let newL = console.Sprintf("\n %v",$_)
+        	FileContents += newL
+        }
+
+        return FileContents
+    }
+
+    static void ReadLinesofFile(filePath) {
+        let file = newFile(filePath, "r")
+
+        let FileContents = []
+
+        while (<$file>) { //same as above 'while' loop
+            let newL = $_
+        	FileContents += newL
+        }
+
+        return FileContents
+    }
+
+    static void WritetoFile(filename,text) {
+        file = newFile(filename, "w+")
+        if (file == nil) {
+            println("opening ", filename, "for writing failed, error:", file.message())
+            return false
+        } else {  
+            file.writeLine(text)
+            return true
+        } 
+    }
+
+    static void AppendtoFile(filename,text) {
+        file = newFile(filename, "a+")
+        if (file == nil) {
+            println("opening ", filename, "for appending failed, error:", file.message())
+            return false
+        } else {  
+            file.writeLine(text)
+            return true
+        }   
+    }
+}
