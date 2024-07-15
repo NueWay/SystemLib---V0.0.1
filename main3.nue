@@ -1,0 +1,66 @@
+import nuepkgs.system.std.io_pkg
+//import nuepkgs.system.std.collections // RIP // 2024 - 2024
+    import nuepkgs.system.std.mdim.vectors
+    import nuepkgs.system.std.mdim.tesseract
+
+console.Println("Hi From @main3\n Uncomment some code to See the results")
+
+// Example usage of the vectors library
+
+///// VECTORS ARE 2, 4, 8, 16, 32, 64 AND MORE ADDING SOON /////
+//// VECTOR128 WAS ADDED BUT SOME PROBLEMS CAME, LOL , LMAO ////
+
+// Create a new Vector8 object with initial values
+//let v1 = vectors.NewVector8(1, 2, 3, 4, 5, 6, 7, 8)
+
+// Create another Vector8 object with different initial values
+//let v2 = vectors.NewVector8(8, 7, 6, 5, 4, 3, 2, 1)
+
+// Add two Vector8 objects
+//let v3 = vectors.AddVectors8(v1, v2)
+
+// Multiply a Vector8 object by a scalar
+//let v5 = vectors.MultiplyVector8(v1, 2)
+
+// Print the results
+//console.Println("v3: ", v3)
+//console.Println("v1: ", v1)
+//console.Println("v5: ", v5)
+
+//let v1 = vectors.NewVector32(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32)
+//console.Println(vectors.Vector32Magnitude(v1))
+
+//let v1 = vectors.NewVector64(2151, 3831, 341, 3012, 5124, 1172, 2617, 2407, 4794, 2178, 3032, 1021, 2573, 373, 2794, 5082, 4725, 1588, 271, 3729, 1651, 3057, 4288, 2292, 4901, 3998, 4479, 417, 3467, 2634, 5276, 1382, 1104, 2457, 1534, 2796, 344, 88, 4807, 2515, 1771, 3839, 4290, 4927, 1837, 5305, 4317, 347, 449, 4078, 4801, 3837, 1086, 5168, 5296, 3704, 2814, 5088, 358)
+//let v2 = vectors.NewVector64(2072, 5006, 1812, 2461, 4645, 2893, 4227, 525, 3874, 4917, 1126, 4730, 1441, 2835, 1841, 3902, 2242, 2588, 4522, 5238, 2687, 1731, 1484, 3653, 2511, 200, 1501, 3938, 3717, 3691, 544, 1016, 1263, 1945, 3327, 1624, 1915, 1925, 1712, 1875, 4085, 1094, 2028, 1805, 4224, 1074, 1394, 5285, 376, 3847, 3514, 4474, 3517, 5037, 5035, 4506, 2970, 3076, 4524)
+//console.Println(vectors.Vector64Dot(v1,v2))
+//console.Println(vectors.Vector64Magnitude(v1))
+//console.Println(vectors.Vector64Magnitude(v2))
+//console.Println(vectors.MultiplyVector64(v1,2))
+
+
+
+
+
+////////////////////////
+// Testing io_pkg Lib //
+////////////////////////
+
+//console.Println(io_pkg.Filesystem.ReadFilef("main2.mp")) // NORMAL VERSION // COMPLETED
+//console.Println(io_pkg.Filesystem.ReadFile("main2.mp"))  // PREETY VERSION // COMPLETED
+
+//console.Println(io_pkg.Filesystem.WritetoFile("abc.abc" , "hall76r776r76r7rro"))
+//console.Println(io_pkg.Filesystem.AppendtoFile("abc.abc" , "hall76r776r76r7rro"))
+
+//file = newFile("main.mp", "w+")
+//file.writeLine("hamza")
+
+
+//file = newFile("abc.abc", "w+")
+//file.writeLine("hamza is here too")
+
+//let file = newFile("main2.mp", "r")
+//console.Println(abc)
+
+//while (<$file>) { //same as above 'while' loop
+//	println($_)
+//}

@@ -1,0 +1,9 @@
+import nuepkgs.system.std.io_pkg
+//import nuepkgs.system.std.collections // RIP // 2024 - 2024      // NOT FUN ENOUGH
+//import nuepkgs.system.std.mdim.shapes.twoD // RIP // 2024 - 2024 // NOT FUN ENOUGH
+
+console.Println("Hi from @Main4")
+
+//console.Println(io_pkg.ReadLinesofFile("main.mp")) // TEST SUCCESSFULL
+
+
